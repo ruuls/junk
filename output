@@ -1,0 +1,1148 @@
+============================================================
+  INSTALLING DEPENDENCIES
+============================================================
+
+[CMD] pip install -q git+https://github.com/sunsmarterjie/yolov12.git roboflow matplotlib scipy pandas pyyaml opencv-python-headless
+
+FlashAttention is not available on this device. Using scaled_dot_product_attention instead.
+
+[INFO] Working directory: /home/ragul/Thesis/faba/Yolov12
+[INFO] Timestamp: 20260214_235745
+[INFO] Python: 3.9.25 (main, Nov 10 2025, 00:00:00) 
+[GCC 11.5.0 20240719 (Red Hat 11.5.0-11)]
+[INFO] PyTorch: 2.8.0+cu128
+[INFO] CUDA available: True
+[INFO] GPU count: 4
+[INFO] GPU 0: NVIDIA H200 (139.8 GB)
+[INFO] GPU 1: NVIDIA H200 (139.8 GB)
+[INFO] GPU 2: NVIDIA H200 (139.8 GB)
+[INFO] GPU 3: NVIDIA H200 (139.8 GB)
+
+[CMD] nvidia-smi
+Sat Feb 14 23:57:45 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   31C    P0             78W /  700W |       4MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H200                    On  |   00000000:4C:00.0 Off |                    0 |
+| N/A   29C    P0             75W /  700W |       4MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA H200                    On  |   00000000:5D:00.0 Off |                    0 |
+| N/A   31C    P0             78W /  700W |       4MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA H200                    On  |   00000000:9B:00.0 Off |                    0 |
+| N/A   35C    P0             77W /  700W |       4MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+
+[CMD] /home/ragul/.venv/bin/python -m pip freeze
+absl-py==2.3.1
+accelerate==1.10.1
+anyio==4.11.0
+asttokens==3.0.1
+bitsandbytes==0.48.2
+certifi==2025.11.12
+charset-normalizer==3.4.4
+click==8.1.8
+comm==0.2.3
+contourpy==1.3.0
+cycler==0.12.1
+debugpy==1.8.17
+decorator==5.2.1
+defusedxml==0.7.1
+easydict==1.13
+exceptiongroup==1.3.1
+executing==2.2.1
+filelock==3.19.1
+filetype==1.2.0
+fonttools==4.60.1
+fsspec==2025.10.0
+grpcio==1.76.0
+h11==0.16.0
+hf-xet==1.2.0
+httpcore==1.0.9
+httpx==0.28.1
+huggingface-hub==0.36.0
+idna==3.7
+importlib_metadata==8.7.0
+importlib_resources==6.5.2
+ipykernel==6.31.0
+ipython==8.18.1
+ipywidgets==8.1.8
+jedi==0.19.2
+Jinja2==3.1.6
+joblib==1.5.2
+jupyter_client==8.6.3
+jupyter_core==5.8.1
+jupyterlab_widgets==3.0.16
+kiwisolver==1.4.7
+Markdown==3.9
+MarkupSafe==3.0.3
+matplotlib==3.9.4
+matplotlib-inline==0.2.1
+microvenv==2025.0
+mpmath==1.3.0
+nest-asyncio==1.6.0
+networkx==3.2.1
+numpy==1.26.4
+nvidia-cublas-cu12==12.8.4.1
+nvidia-cuda-cupti-cu12==12.8.90
+nvidia-cuda-nvrtc-cu12==12.8.93
+nvidia-cuda-runtime-cu12==12.8.90
+nvidia-cudnn-cu12==9.10.2.21
+nvidia-cufft-cu12==11.3.3.83
+nvidia-cufile-cu12==1.13.1.3
+nvidia-curand-cu12==10.3.9.90
+nvidia-cusolver-cu12==11.7.3.90
+nvidia-cusparse-cu12==12.5.8.93
+nvidia-cusparselt-cu12==0.7.1
+nvidia-nccl-cu12==2.27.3
+nvidia-nvjitlink-cu12==12.8.93
+nvidia-nvtx-cu12==12.8.90
+opencv-python==4.11.0.86
+opencv-python-headless==4.10.0.84
+packaging==25.0
+pandas==2.3.3
+parso==0.8.5
+peft==0.17.1
+pexpect==4.9.0
+pillow==11.3.0
+pillow-avif-plugin==1.5.5
+platformdirs==4.4.0
+prompt_toolkit==3.0.52
+protobuf==6.33.1
+psutil==7.1.3
+ptyprocess==0.7.0
+pure_eval==0.2.3
+py-cpuinfo==9.0.0
+pyDeprecate==0.4.0
+Pygments==2.19.2
+pyparsing==3.2.5
+python-dateutil==2.9.0.post0
+python-dotenv==1.2.1
+pytz==2025.2
+PyYAML==6.0.3
+pyzmq==27.1.0
+regex==2025.11.3
+requests==2.32.5
+requests-toolbelt==1.0.0
+roboflow==1.2.13
+safetensors==0.7.0
+scikit-learn==1.6.1
+scipy==1.11.4
+seaborn==0.13.2
+sentencepiece==0.2.1
+shellingham==1.5.4
+six==1.17.0
+sniffio==1.3.1
+stack-data==0.6.3
+supervision==0.27.0.post1
+sympy==1.14.0
+tensorboard==2.20.0
+tensorboard-data-server==0.7.2
+tensorboardX==2.6.4
+threadpoolctl==3.6.0
+tokenizers==0.22.1
+tomli==2.2.1
+torch==2.8.0
+torchvision==0.23.0
+tornado==6.5.2
+tqdm==4.67.1
+traitlets==5.14.3
+transformers==4.57.3
+triton==3.4.0
+typer-slim==0.20.0
+typing_extensions==4.15.0
+tzdata==2025.2
+ultralytics @ git+https://github.com/sunsmarterjie/yolov12.git@3bca22b336e96cfdabfec4c062b84eef210e9563
+ultralytics-thop==2.0.18
+urllib3==2.5.0
+wcwidth==0.2.14
+Werkzeug==3.1.3
+widgetsnbextension==4.0.15
+zipp==3.23.0
+
+
+[INFO] Experiment directory: /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745
+
+============================================================
+  DOWNLOADING DATASET
+============================================================
+loading Roboflow workspace...
+loading Roboflow project...
+Downloading Dataset Version Zip in plant_weed_higher_resolution-28 to yolov8:: 100%|██████████| 123223/123223 [00:01<00:00, 79250.79it/s]
+
+Extracting Dataset Version Zip to plant_weed_higher_resolution-28 in yolov8:: 100%|██████████| 942/942 [00:10<00:00, 94.09it/s] 
+[INFO] Dataset downloaded in 14.5s
+[INFO] Classes (nc=2): ['plant', 'weed']
+[INFO] data_abs.yaml:
+nc: 2
+names: ['plant', 'weed']
+train: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/train/images
+val: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/valid/images
+test: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/test/images
+
+[INFO] train: 396 images
+[INFO] valid: 34 images
+[INFO] test: 35 images
+
+============================================================
+  TRAINING YOLOV12X on 0,1,2,3 (Ultralytics DDP)
+============================================================
+Downloading https://github.com/sunsmarterjie/yolov12/releases/download/turbo/yolov12x.pt to 'yolov12x.pt'...
+100%|██████████| 114M/114M [00:00<00:00, 189MB/s]  
+New https://pypi.org/project/ultralytics/8.4.14 available 😃 Update with 'pip install -U ultralytics'
+Ultralytics 8.3.63 🚀 Python-3.9.25 torch-2.8.0+cu128 CUDA:0 (NVIDIA H200, 143156MiB)
+                                                      CUDA:1 (NVIDIA H200, 143156MiB)
+                                                      CUDA:2 (NVIDIA H200, 143156MiB)
+                                                      CUDA:3 (NVIDIA H200, 143156MiB)
+engine/trainer: task=detect, mode=train, model=yolov12x.pt, data=/home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/data_abs.yaml, epochs=200, time=None, patience=25, batch=32, imgsz=1280, save=True, save_period=10, cache=False, device=0,1,2,3, workers=8, project=/home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs, name=train, exist_ok=False, pretrained=True, optimizer=AdamW, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=15, resume=False, amp=True, fraction=1.0, profile=False, freeze=None, multi_scale=False, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, vid_stride=1, stream_buffer=False, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, embed=None, show=False, save_frames=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, show_boxes=True, line_width=None, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=True, opset=None, workspace=None, nms=False, lr0=0.001, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=5.0, warmup_momentum=0.8, warmup_bias_lr=0.0, box=0.15, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, nbs=64, hsv_h=0.02, hsv_s=0.4, hsv_v=0.1, degrees=5.0, translate=0.05, scale=0.15, shear=0.0, perspective=0.0, flipud=0.5, fliplr=0.5, bgr=0.0, mosaic=1.0, mixup=0.15, copy_paste=0.15, copy_paste_mode=flip, auto_augment=randaugment, erasing=0.4, crop_fraction=1.0, cfg=None, tracker=botsort.yaml, save_dir=/home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train
+Overriding model.yaml nc=80 with nc=2
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1      2784  ultralytics.nn.modules.conv.Conv             [3, 96, 3, 2]                 
+  1                  -1  1     83328  ultralytics.nn.modules.conv.Conv             [96, 192, 3, 2, 1, 2]         
+  2                  -1  2    389760  ultralytics.nn.modules.block.C3k2            [192, 384, 2, True, 0.25]     
+  3                  -1  1    332544  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2, 1, 4]        
+  4                  -1  2   1553664  ultralytics.nn.modules.block.C3k2            [384, 768, 2, True, 0.25]     
+  5                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+  6                  -1  4  10152960  ultralytics.nn.modules.block.A2C2f           [768, 768, 4, True, 4, True, 1.5]
+  7                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+  8                  -1  4  10152960  ultralytics.nn.modules.block.A2C2f           [768, 768, 4, True, 1, True, 1.5]
+  9                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 10             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 11                  -1  2   4727040  ultralytics.nn.modules.block.A2C2f           [1536, 768, 2, False, -1, True, 1.5]
+ 12                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 13             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 14                  -1  2   1331328  ultralytics.nn.modules.block.A2C2f           [1536, 384, 2, False, -1, True, 1.5]
+ 15                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+ 16            [-1, 11]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 17                  -1  2   4579584  ultralytics.nn.modules.block.A2C2f           [1152, 768, 2, False, -1, True, 1.5]
+ 18                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+ 19             [-1, 8]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 20                  -1  2   5612544  ultralytics.nn.modules.block.C3k2            [1536, 768, 2, True]          
+ 21        [14, 17, 20]  1   3147862  ultralytics.nn.modules.head.Detect           [2, [384, 768, 768]]          
+YOLOv12x summary: 895 layers, 59,324,086 parameters, 59,324,070 gradients, 185.4 GFLOPs
+
+Transferred 1335/1341 items from pretrained weights
+DDP: debug command /home/ragul/.venv/bin/python -m torch.distributed.run --nproc_per_node 4 --master_port 41357 /home/ragul/.config/yolov12/DDP/_temp_sz9zigza23448734257936.py
+FlashAttention is not available on this device. Using scaled_dot_product_attention instead.
+Ultralytics 8.3.63 🚀 Python-3.9.25 torch-2.8.0+cu128 CUDA:0 (NVIDIA H200, 143156MiB)
+                                                      CUDA:1 (NVIDIA H200, 143156MiB)
+                                                      CUDA:2 (NVIDIA H200, 143156MiB)
+                                                      CUDA:3 (NVIDIA H200, 143156MiB)
+TensorBoard: Start with 'tensorboard --logdir /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train', view at http://localhost:6006/
+Overriding model.yaml nc=80 with nc=2
+Transferred 1335/1341 items from pretrained weights
+Freezing layer 'model.21.dfl.conv.weight'
+AMP: running Automatic Mixed Precision (AMP) checks...
+Downloading https://github.com/sunsmarterjie/yolov12/releases/download/turbo/yolov12n.pt to 'yolov12n.pt'...
+100%|██████████| 5.26M/5.26M [00:00<00:00, 64.3MB/s]
+AMP: checks passed ✅
+train: Scanning /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/train/labels... 396 images, 0 backgrounds, 0 corrupt: 100%|██████████| 396/396 [00:00<00:00, 2084.11it/s]
+train: New cache created: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/train/labels.cache
+val: Scanning /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/valid/labels... 34 images, 0 backgrounds, 0 corrupt: 100%|██████████| 34/34 [00:00<00:00, 1393.40it/s]
+val: New cache created: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/valid/labels.cache
+Plotting labels to /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train/labels.jpg... 
+optimizer: AdamW(lr=0.001, momentum=0.937) with parameter groups 221 weight(decay=0.0), 230 weight(decay=0.0005), 227 bias(decay=0.0)
+TensorBoard: model graph visualization added ✅
+Image sizes 1280 train, 1280 val
+Using 32 dataloader workers
+Logging results to /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train
+Starting training for 200 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+  0%|          | 0/13 [00:00<?, ?it/s]/home/ragul/.venv/lib64/python3.9/site-packages/torch/autograd/graph.py:829: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [384, 384, 1, 1], strides() = [384, 1, 384, 384]
+bucket_view.sizes() = [384, 384, 1, 1], strides() = [384, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:334.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ragul/.venv/lib64/python3.9/site-packages/torch/autograd/graph.py:829: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [384, 384, 1, 1], strides() = [384, 1, 384, 384]
+bucket_view.sizes() = [384, 384, 1, 1], strides() = [384, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:334.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ragul/.venv/lib64/python3.9/site-packages/torch/autograd/graph.py:829: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [384, 384, 1, 1], strides() = [384, 1, 384, 384]
+bucket_view.sizes() = [384, 384, 1, 1], strides() = [384, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:334.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ragul/.venv/lib64/python3.9/site-packages/torch/autograd/graph.py:829: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [384, 384, 1, 1], strides() = [384, 1, 384, 384]
+bucket_view.sizes() = [384, 384, 1, 1], strides() = [384, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:334.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+      1/200       110G    0.05002      3.283      2.139        470       1280: 100%|██████████| 13/13 [00:26<00:00,  2.02s/it]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:04<00:00,  1.45s/it]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      2/200       104G    0.03723      1.296      1.529        501       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.07it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      3/200       108G    0.03511       1.09      1.479        417       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.06it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      4/200       108G    0.03473      1.106      1.493        379       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.06it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      5/200       109G     0.0337      1.031      1.443        428       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.05it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      6/200       109G    0.03407      1.032      1.458        250       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.05it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      7/200       109G    0.03436      1.072      1.469        385       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:00<00:00,  3.03it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      8/200       107G    0.03312      1.066      1.432        318       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:02<00:00,  1.17it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      9/200       107G     0.0341      1.048      1.446        620       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042      0.139     0.0085     0.0666     0.0254
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     10/200       109G    0.03347     0.9895      1.413        441       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.56it/s]
+                   all         34       4042      0.615      0.628      0.621      0.314
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     11/200       106G    0.03475      1.002      1.442        402       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.72it/s]
+                   all         34       4042      0.656      0.581      0.614      0.297
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     12/200       111G    0.03365     0.9867      1.414        369       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.612      0.522      0.582      0.291
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     13/200       106G    0.03328     0.9775      1.435        492       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.83it/s]
+                   all         34       4042      0.596      0.618      0.633       0.33
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     14/200       111G    0.03356     0.9509      1.407        367       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.83it/s]
+                   all         34       4042      0.728      0.674       0.73      0.375
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     15/200       109G    0.03275     0.9656      1.392        291       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.82it/s]
+                   all         34       4042      0.702      0.683      0.726      0.351
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     16/200       111G     0.0329     0.9485      1.399        514       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.81it/s]
+                   all         34       4042      0.729      0.711      0.755      0.408
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     17/200       115G     0.0329     0.9559       1.41        341       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.84it/s]
+                   all         34       4042      0.763      0.706       0.77      0.405
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     18/200       106G    0.03192     0.9141      1.383        336       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.79it/s]
+                   all         34       4042      0.664       0.61      0.667      0.258
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     19/200       109G    0.03208     0.9379      1.383        736       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.80it/s]
+                   all         34       4042       0.67      0.716      0.722      0.357
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     20/200       106G    0.03276     0.9208      1.389        529       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.79it/s]
+                   all         34       4042      0.715      0.723      0.743      0.398
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     21/200       108G    0.03239     0.9606      1.373        548       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.689      0.608      0.686      0.378
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     22/200       109G    0.03112     0.8818      1.356        366       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.81it/s]
+                   all         34       4042      0.687      0.667      0.689      0.344
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     23/200       112G    0.03152     0.9172       1.35        329       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.80it/s]
+                   all         34       4042      0.702      0.702      0.736       0.39
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     24/200       109G    0.03215     0.9135      1.385        411       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.734      0.734      0.764      0.408
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     25/200       109G    0.03204     0.8884       1.38        383       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.84it/s]
+                   all         34       4042      0.753      0.731      0.782      0.421
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     26/200       107G    0.03095     0.8658      1.357        627       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.723      0.728      0.759      0.405
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     27/200       111G    0.03244     0.8895      1.376        542       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.84it/s]
+                   all         34       4042      0.755      0.727      0.777      0.405
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     28/200       109G    0.03171     0.8811       1.37        345       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.85it/s]
+                   all         34       4042      0.739      0.726      0.771      0.414
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     29/200       106G    0.03246     0.9375      1.395        370       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.79it/s]
+                   all         34       4042      0.689      0.713      0.729      0.398
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     30/200       110G    0.03205     0.8869      1.387        356       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.754      0.745      0.794       0.44
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     31/200       109G    0.03126     0.8665      1.368        264       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.84it/s]
+                   all         34       4042      0.749      0.757      0.801      0.447
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     32/200       111G    0.03199     0.8785      1.374        320       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.703      0.751      0.772       0.43
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     33/200       106G    0.03202     0.8768      1.369        412       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042      0.745      0.742      0.782      0.425
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     34/200       109G    0.03188      0.874      1.351        385       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042      0.711      0.739      0.757      0.424
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     35/200       111G    0.03054     0.8635      1.337        465       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.88it/s]
+                   all         34       4042      0.717      0.718      0.761      0.423
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     36/200       110G    0.03096     0.8511      1.354        449       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.737      0.719       0.76       0.42
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     37/200       109G    0.03118     0.8516      1.341        456       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.83it/s]
+                   all         34       4042      0.725      0.721      0.755      0.404
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     38/200       109G    0.03202     0.8627      1.357        575       1280: 100%|██████████| 13/13 [00:12<00:00,  1.00it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042       0.69      0.691      0.724      0.356
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     39/200       109G    0.03042     0.8246      1.326        420       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.761      0.725      0.788      0.444
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     40/200       112G    0.03108      0.842       1.38        464       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.88it/s]
+                   all         34       4042      0.744      0.742      0.784      0.445
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     41/200       108G    0.03124     0.8567       1.36        479       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.86it/s]
+                   all         34       4042       0.68      0.647      0.667      0.257
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     42/200       107G    0.03173     0.8586      1.364        411       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.723      0.699      0.747      0.368
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     43/200       105G    0.03228     0.8324       1.36        629       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.714      0.755      0.772      0.427
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     44/200       111G    0.03201     0.8772       1.39        255       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.667      0.707      0.703      0.336
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     45/200       107G    0.03109     0.8304      1.349        602       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.697      0.684      0.704      0.329
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     46/200       111G    0.03096     0.8663      1.345        517       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042       0.72      0.727      0.755      0.395
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     47/200       108G    0.03107     0.8426      1.335        470       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.88it/s]
+                   all         34       4042       0.75      0.717      0.774      0.431
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     48/200       107G    0.03009     0.8018      1.321        397       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.91it/s]
+                   all         34       4042      0.765      0.733      0.787      0.441
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     49/200       110G    0.03113     0.8202      1.346        577       1280: 100%|██████████| 13/13 [00:12<00:00,  1.01it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.88it/s]
+                   all         34       4042      0.781      0.714      0.785      0.444
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     50/200       108G    0.03063     0.8085      1.327        392       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.84it/s]
+                   all         34       4042      0.747      0.729      0.776      0.425
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     51/200       114G    0.03147      0.833       1.36        210       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042      0.763      0.736      0.781      0.443
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     52/200       110G    0.03053     0.8138      1.324        485       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.90it/s]
+                   all         34       4042      0.723      0.664      0.743      0.423
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     53/200       108G    0.03108     0.8282      1.347        642       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042      0.747      0.728      0.779      0.436
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     54/200       106G     0.0305     0.8357      1.319        464       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.87it/s]
+                   all         34       4042      0.743      0.722       0.77      0.429
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     55/200       109G    0.03116     0.8306      1.359        298       1280: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.89it/s]
+                   all         34       4042        0.7      0.749      0.763      0.426
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+     56/200       107G    0.03068     0.8073      1.326        513       1280: 100%|██████████| 13/13 [00:12<00:00,  1.02it/s]
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:01<00:00,  2.92it/s]
+                   all         34       4042      0.734      0.721      0.757      0.406
+EarlyStopping: Training stopped early as no improvement observed in last 25 epochs. Best results observed at epoch 31, best model saved as best.pt.
+To update EarlyStopping(patience=25) pass a new patience value, i.e. `patience=300` or use `patience=0` to disable EarlyStopping.
+
+56 epochs completed in 0.267 hours.
+Optimizer stripped from /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train/weights/last.pt, 119.7MB
+Optimizer stripped from /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train/weights/best.pt, 119.7MB
+
+Validating /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train/weights/best.pt...
+Ultralytics 8.3.63 🚀 Python-3.9.25 torch-2.8.0+cu128 CUDA:0 (NVIDIA H200, 143156MiB)
+                                                      CUDA:1 (NVIDIA H200, 143156MiB)
+                                                      CUDA:2 (NVIDIA H200, 143156MiB)
+                                                      CUDA:3 (NVIDIA H200, 143156MiB)
+YOLOv12x summary (fused): 674 layers, 59,247,190 parameters, 0 gradients, 184.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:02<00:00,  1.19it/s]
+                   all         34       4042      0.749      0.756      0.801      0.447
+                 plant         34       2518      0.856      0.716      0.811      0.427
+                  weed         31       1524      0.642      0.796       0.79      0.468
+Speed: 0.4ms preprocess, 27.3ms inference, 0.0ms loss, 1.3ms postprocess per image
+Results saved to /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train
+
+[INFO] Training completed in 16.6 min (0.28 hr)
+[INFO] YOLO train dir: /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/train
+[INFO] Saved best.pt (114.1 MB)
+[INFO] Saved last.pt (114.1 MB)
+
+============================================================
+  GENERATING TRAINING CURVES
+============================================================
+  [PLOT] train_box_loss.png
+  [PLOT] train_cls_loss.png
+  [PLOT] train_dfl_loss.png
+  [PLOT] val_box_loss.png
+  [PLOT] val_cls_loss.png
+  [PLOT] val_dfl_loss.png
+  [PLOT] lr_schedule.png
+  [PLOT] mAP50.png
+  [PLOT] mAP50-95.png
+  [PLOT] precision.png
+  [PLOT] recall.png
+  [PLOT] all_curves_combined.png
+
+============================================================
+  DETECTION METRICS - YOLO VALIDATION (test split)
+============================================================
+Ultralytics 8.3.63 🚀 Python-3.9.25 torch-2.8.0+cu128 CUDA:0 (NVIDIA H200, 143156MiB)
+YOLOv12x summary (fused): 674 layers, 59,247,190 parameters, 0 gradients, 184.1 GFLOPs
+val: Scanning /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/test/labels... 35 images, 0 backgrounds, 0 corrupt: 100%|██████████| 35/35 [00:00<00:00, 1092.42it/s]
+val: New cache created: /home/ragul/Thesis/faba/Yolov12/plant_weed_higher_resolution-28/test/labels.cache
+
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 3/3 [00:03<00:00,  1.16s/it]
+                   all         35       4532      0.789      0.814      0.855      0.487
+                 plant         35       2725      0.904      0.811      0.898      0.492
+                  weed         33       1807      0.675      0.817      0.812      0.482
+Speed: 0.1ms preprocess, 38.8ms inference, 0.0ms loss, 4.2ms postprocess per image
+Results saved to /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/val_test
+[INFO] YOLO val dir: /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745/yolo_runs/val_test
+  [COPY] confusion_matrix.png
+  [COPY] P_curve.png
+  [COPY] F1_curve.png
+  [COPY] confusion_matrix_normalized.png
+  [COPY] R_curve.png
+  [COPY] PR_curve.png
+
+[INFO] Detection summary: {'mAP50': 0.8551, 'mAP50-95': 0.487, 'precision': 0.7894, 'recall': 0.8141}
+
+============================================================
+  PER-IMAGE PLANT COUNTING + VISUALIZATION
+============================================================
+
+============================================================
+  TRAIN: 396 images
+============================================================
+  [   1/396] enhanced_DJI_20250217124940_0073_D_chunk_0_0_png.rf.6c757353f5954124a3d35040d8f32843.jpg GT: 98 Pred:116 TP: 96 FP: 20 FN:  2 Err: +18
+  [   2/396] enhanced_DJI_20250217124940_0073_D_chunk_0_0_png.rf.97478d5dc705e15dc461d7e8a6c35601.jpg GT: 98 Pred:102 TP: 91 FP: 11 FN:  7 Err:  +4
+  [   3/396] enhanced_DJI_20250217124940_0073_D_chunk_0_0_png.rf.fb46c861cc3f25acf32060a7c8a596de.jpg GT: 96 Pred:104 TP: 92 FP: 12 FN:  4 Err:  +8
+  [   4/396] enhanced_DJI_20250217124940_0073_D_chunk_0_1_png.rf.3c7a2e995bc8bcb5f06e368385dd5921.jpg GT: 20 Pred: 20 TP: 19 FP:  1 FN:  1 Err:  +0
+  [   5/396] enhanced_DJI_20250217124940_0073_D_chunk_0_1_png.rf.99e88261e7fcc12473e48f8d94c7f242.jpg GT: 21 Pred: 25 TP: 20 FP:  5 FN:  1 Err:  +4
+  [   6/396] enhanced_DJI_20250217124940_0073_D_chunk_0_1_png.rf.cfa34a41f83218b192a60df5997ce2bb.jpg GT: 20 Pred: 21 TP: 18 FP:  3 FN:  2 Err:  +1
+  [   7/396] enhanced_DJI_20250217124940_0073_D_chunk_1_0_png.rf.783fefe9fc6b3fe22a1677d3015b203d.jpg GT:130 Pred:132 TP:110 FP: 22 FN: 20 Err:  +2
+  [   8/396] enhanced_DJI_20250217124940_0073_D_chunk_1_0_png.rf.95d459944c27b7ac80492c7b6c6a587c.jpg GT:129 Pred:117 TP:104 FP: 13 FN: 25 Err: -12
+  [   9/396] enhanced_DJI_20250217124940_0073_D_chunk_1_0_png.rf.a2ff86407121ce20a91a27cbc7efb7b5.jpg GT:127 Pred:104 TP: 97 FP:  7 FN: 30 Err: -23
+  [  10/396] enhanced_DJI_20250217124942_0074_D_chunk_0_0_png.rf.26f679623f51748f302b78971446a924.jpg GT: 92 Pred: 88 TP: 77 FP: 11 FN: 15 Err:  -4
+  [  11/396] enhanced_DJI_20250217124942_0074_D_chunk_0_0_png.rf.7bb37436c78818956d44eb3f97aa9f50.jpg GT: 91 Pred: 72 TP: 71 FP:  1 FN: 20 Err: -19
+  [  12/396] enhanced_DJI_20250217124942_0074_D_chunk_0_0_png.rf.b772f7ad8922053e9726ada7e5cd3bb7.jpg GT: 92 Pred: 75 TP: 72 FP:  3 FN: 20 Err: -17
+  [  13/396] enhanced_DJI_20250217124942_0074_D_chunk_0_1_png.rf.52a4550fc9a7200fbc4e532394c35f27.jpg GT: 18 Pred: 20 TP: 16 FP:  4 FN:  2 Err:  +2
+  [  14/396] enhanced_DJI_20250217124942_0074_D_chunk_0_1_png.rf.7232519da9a15964e8fca807c98bfce4.jpg GT: 18 Pred: 24 TP: 17 FP:  7 FN:  1 Err:  +6
+  [  15/396] enhanced_DJI_20250217124942_0074_D_chunk_0_1_png.rf.fe688877dab58c94c24e96606c47f0de.jpg GT: 16 Pred: 18 TP: 15 FP:  3 FN:  1 Err:  +2
+  [  16/396] enhanced_DJI_20250217124942_0074_D_chunk_1_1_png.rf.246ee37b03262ea8bb9cc77ebfeb87db.jpg GT: 21 Pred: 25 TP: 19 FP:  6 FN:  2 Err:  +4
+  [  17/396] enhanced_DJI_20250217124942_0074_D_chunk_1_1_png.rf.48a1b193765ec9ec445484ee2a1b8241.jpg GT: 21 Pred: 25 TP: 19 FP:  6 FN:  2 Err:  +4
+  [  18/396] enhanced_DJI_20250217124942_0074_D_chunk_1_1_png.rf.aff642ce42502b8868a058e3adf3b6de.jpg GT: 21 Pred: 22 TP: 19 FP:  3 FN:  2 Err:  +1
+  [  19/396] enhanced_DJI_20250217124944_0075_D_chunk_0_0_png.rf.3265f0eed87e679fe93af43b0b3b7851.jpg GT: 57 Pred: 55 TP: 52 FP:  3 FN:  5 Err:  -2
+  [  20/396] enhanced_DJI_20250217124944_0075_D_chunk_0_0_png.rf.64e376302023246f1fca10aba8042c78.jpg GT: 57 Pred: 56 TP: 52 FP:  4 FN:  5 Err:  -1
+  [  21/396] enhanced_DJI_20250217124944_0075_D_chunk_0_0_png.rf.d8a6ca94488ef0e2b82208faf7e97486.jpg GT: 57 Pred: 62 TP: 55 FP:  7 FN:  2 Err:  +5
+  [  22/396] enhanced_DJI_20250217124944_0075_D_chunk_1_0_png.rf.05361cc2cc2586ee8ede5ee1e835095a.jpg GT:120 Pred:109 TP:107 FP:  2 FN: 13 Err: -11
+  [  23/396] enhanced_DJI_20250217124944_0075_D_chunk_1_0_png.rf.2d29cedcef93c94b330eadc4e93e5753.jpg GT:123 Pred:129 TP:115 FP: 14 FN:  8 Err:  +6
+  [  24/396] enhanced_DJI_20250217124944_0075_D_chunk_1_0_png.rf.e1da74924d22f94fe9c9a1d11b95dd10.jpg GT:123 Pred:117 TP:113 FP:  4 FN: 10 Err:  -6
+  [  25/396] enhanced_DJI_20250217124944_0075_D_chunk_1_1_png.rf.60406bf16fd143d6d4c6eb87e8cb4957.jpg GT: 12 Pred: 15 TP: 12 FP:  3 FN:  0 Err:  +3
+  [  26/396] enhanced_DJI_20250217124944_0075_D_chunk_1_1_png.rf.81170f74b6374637d352f310010175ea.jpg GT: 12 Pred: 12 TP: 11 FP:  1 FN:  1 Err:  +0
+  [  27/396] enhanced_DJI_20250217124944_0075_D_chunk_1_1_png.rf.e8dca694bc6710420243185cfaadb721.jpg GT: 12 Pred: 12 TP: 11 FP:  1 FN:  1 Err:  +0
+  [  28/396] enhanced_DJI_20250217124946_0076_D_chunk_0_0_png.rf.88f00cd185427ef29510fa4fca9b6ba0.jpg GT: 69 Pred: 69 TP: 65 FP:  4 FN:  4 Err:  +0
+  [  29/396] enhanced_DJI_20250217124946_0076_D_chunk_0_0_png.rf.a0c6fa01b9451ad3f6ea4fdf34c2c128.jpg GT: 69 Pred: 67 TP: 63 FP:  4 FN:  6 Err:  -2
+  [  30/396] enhanced_DJI_20250217124946_0076_D_chunk_0_0_png.rf.d4ead839853ac2980d3f9ab838f8f7ce.jpg GT: 70 Pred: 75 TP: 66 FP:  9 FN:  4 Err:  +5
+  [  31/396] enhanced_DJI_20250217124946_0076_D_chunk_0_1_png.rf.4077cdb470e2d3a65ed276f6acb5ce63.jpg GT: 31 Pred: 33 TP: 30 FP:  3 FN:  1 Err:  +2
+  [  32/396] enhanced_DJI_20250217124946_0076_D_chunk_0_1_png.rf.f5b484d17a4732105ceb24e2aa332971.jpg GT: 30 Pred: 31 TP: 28 FP:  3 FN:  2 Err:  +1
+  [  33/396] enhanced_DJI_20250217124946_0076_D_chunk_0_1_png.rf.fae5cea5f4319ef1dd2790d8e83d2b81.jpg GT: 30 Pred: 32 TP: 29 FP:  3 FN:  1 Err:  +2
+  [  34/396] enhanced_DJI_20250217124946_0076_D_chunk_1_0_png.rf.7703ace049f6906c4c8e725c4f2b18cf.jpg GT: 93 Pred: 86 TP: 83 FP:  3 FN: 10 Err:  -7
+  [  35/396] enhanced_DJI_20250217124946_0076_D_chunk_1_0_png.rf.b3299f3337a00a2655d54f68ddd21ec1.jpg GT: 96 Pred:102 TP: 90 FP: 12 FN:  6 Err:  +6
+  [  36/396] enhanced_DJI_20250217124946_0076_D_chunk_1_0_png.rf.d09f99205960bccadf6393d3be3bc34c.jpg GT: 96 Pred: 89 TP: 85 FP:  4 FN: 11 Err:  -7
+  [  37/396] enhanced_DJI_20250217124946_0076_D_chunk_1_1_png.rf.23bf8306eb41b2ff4cb5de01eaf9dfd8.jpg GT:  9 Pred: 14 TP:  9 FP:  5 FN:  0 Err:  +5
+  [  38/396] enhanced_DJI_20250217124946_0076_D_chunk_1_1_png.rf.7be26758c3a077eef99e7fa951a89bc5.jpg GT:  9 Pred: 15 TP:  9 FP:  6 FN:  0 Err:  +6
+  [  39/396] enhanced_DJI_20250217124946_0076_D_chunk_1_1_png.rf.965c9f392b83a77a8fc44d668592a83e.jpg GT:  8 Pred: 14 TP:  8 FP:  6 FN:  0 Err:  +6
+  [  40/396] enhanced_DJI_20250217124948_0077_D_chunk_0_0_png.rf.c97ea5018c33df08ce83e7e28c12721b.jpg GT: 82 Pred: 78 TP: 72 FP:  6 FN: 10 Err:  -4
+  [  41/396] enhanced_DJI_20250217124948_0077_D_chunk_0_0_png.rf.cc19898e130a8794e006e4f23228df69.jpg GT: 82 Pred: 75 TP: 72 FP:  3 FN: 10 Err:  -7
+  [  42/396] enhanced_DJI_20250217124948_0077_D_chunk_0_0_png.rf.e2bbdfdf20d0d19ed1fa2c477090a639.jpg GT: 82 Pred: 82 TP: 76 FP:  6 FN:  6 Err:  +0
+  [  43/396] enhanced_DJI_20250217124948_0077_D_chunk_0_1_png.rf.07ca52232039413ba1bbfd09340f7c8e.jpg GT: 31 Pred: 36 TP: 30 FP:  6 FN:  1 Err:  +5
+  [  44/396] enhanced_DJI_20250217124948_0077_D_chunk_0_1_png.rf.9a07ec5074bfe6667ace076f998f1542.jpg GT: 31 Pred: 43 TP: 31 FP: 12 FN:  0 Err: +12
+  [  45/396] enhanced_DJI_20250217124948_0077_D_chunk_0_1_png.rf.a6adf459b9a03048697c0edbdaa9b953.jpg GT: 31 Pred: 43 TP: 31 FP: 12 FN:  0 Err: +12
+  [  46/396] enhanced_DJI_20250217124948_0077_D_chunk_1_1_png.rf.01c1485dc01429ca3128f96ce46ad6f4.jpg GT: 15 Pred: 16 TP: 15 FP:  1 FN:  0 Err:  +1
+  [  47/396] enhanced_DJI_20250217124948_0077_D_chunk_1_1_png.rf.72f9206ce9f14947bea17b6d44e87368.jpg GT: 15 Pred: 19 TP: 14 FP:  5 FN:  1 Err:  +4
+  [  48/396] enhanced_DJI_20250217124948_0077_D_chunk_1_1_png.rf.b9be2db9ba2f9b3cf559bd65440e3d5d.jpg GT: 15 Pred: 16 TP: 15 FP:  1 FN:  0 Err:  +1
+  [  49/396] enhanced_DJI_20250217124950_0078_D_chunk_0_0_png.rf.68c71a2120e0124f3ce28bfd4a72f915.jpg GT: 78 Pred: 81 TP: 75 FP:  6 FN:  3 Err:  +3
+  [  50/396] enhanced_DJI_20250217124950_0078_D_chunk_0_0_png.rf.bab87212b39f4b175dacacee9bc1fb1c.jpg GT: 80 Pred: 83 TP: 78 FP:  5 FN:  2 Err:  +3
+  [  51/396] enhanced_DJI_20250217124950_0078_D_chunk_0_0_png.rf.c48205b36a7a6ff9afb323c804870e50.jpg GT: 81 Pred: 89 TP: 80 FP:  9 FN:  1 Err:  +8
+  [  52/396] enhanced_DJI_20250217124950_0078_D_chunk_0_1_png.rf.69e2d0b07aeba0d0eb26f8052596ee2d.jpg GT: 36 Pred: 35 TP: 33 FP:  2 FN:  3 Err:  -1
+  [  53/396] enhanced_DJI_20250217124950_0078_D_chunk_0_1_png.rf.f2cddc39647a214f09f6aa441d1ec4a5.jpg GT: 34 Pred: 32 TP: 31 FP:  1 FN:  3 Err:  -2
+  [  54/396] enhanced_DJI_20250217124950_0078_D_chunk_0_1_png.rf.f649f22c770c8885ffd40c9913fbabd7.jpg GT: 34 Pred: 32 TP: 31 FP:  1 FN:  3 Err:  -2
+  [  55/396] enhanced_DJI_20250217124950_0078_D_chunk_1_0_png.rf.3be63f28ca1808601841203e8a3b34fa.jpg GT: 52 Pred: 51 TP: 49 FP:  2 FN:  3 Err:  -1
+  [  56/396] enhanced_DJI_20250217124950_0078_D_chunk_1_0_png.rf.4ee9bfc88bf685775e83d4633e94344c.jpg GT: 52 Pred: 57 TP: 49 FP:  8 FN:  3 Err:  +5
+  [  57/396] enhanced_DJI_20250217124950_0078_D_chunk_1_0_png.rf.e45eaf1ec89471929d2b231d5ae19ebe.jpg GT: 52 Pred: 56 TP: 48 FP:  8 FN:  4 Err:  +4
+  [  58/396] enhanced_DJI_20250217124950_0078_D_chunk_1_1_png.rf.99f5393acf5cc58fc47c01637960c2ab.jpg GT: 18 Pred: 20 TP: 17 FP:  3 FN:  1 Err:  +2
+  [  59/396] enhanced_DJI_20250217124950_0078_D_chunk_1_1_png.rf.b115b244de4f82dd1b8abcd69a9ea50a.jpg GT: 18 Pred: 17 TP: 16 FP:  1 FN:  2 Err:  -1
+  [  60/396] enhanced_DJI_20250217124950_0078_D_chunk_1_1_png.rf.b2245c9bcec3e2c1b127e1243cd3606e.jpg GT: 18 Pred: 18 TP: 16 FP:  2 FN:  2 Err:  +0
+  [  61/396] enhanced_DJI_20250217124952_0079_D_chunk_0_0_png.rf.50f40e7080c30a1e3ce24cb0a4993f47.jpg GT:113 Pred:117 TP:105 FP: 12 FN:  8 Err:  +4
+  [  62/396] enhanced_DJI_20250217124952_0079_D_chunk_0_0_png.rf.6684696c9e0e8387f389d69aadd9e759.jpg GT:112 Pred:119 TP:106 FP: 13 FN:  6 Err:  +7
+  [  63/396] enhanced_DJI_20250217124952_0079_D_chunk_0_0_png.rf.738f698bf9cf533f57ba58aff1817bd8.jpg GT:113 Pred:126 TP:108 FP: 18 FN:  5 Err: +13
+  [  64/396] enhanced_DJI_20250217124952_0079_D_chunk_0_1_png.rf.5fa1662125f225680353d70f92d483d5.jpg GT: 39 Pred: 36 TP: 34 FP:  2 FN:  5 Err:  -3
+  [  65/396] enhanced_DJI_20250217124952_0079_D_chunk_0_1_png.rf.89e7013e44ae621992474a2bb6bdb35e.jpg GT: 39 Pred: 36 TP: 34 FP:  2 FN:  5 Err:  -3
+  [  66/396] enhanced_DJI_20250217124952_0079_D_chunk_0_1_png.rf.937bdde704c023b44c79524753550e45.jpg GT: 39 Pred: 38 TP: 35 FP:  3 FN:  4 Err:  -1
+  [  67/396] enhanced_DJI_20250217124952_0079_D_chunk_1_0_png.rf.339f06397df248cba08466f8d2af91d5.jpg GT: 69 Pred: 77 TP: 67 FP: 10 FN:  2 Err:  +8
+  [  68/396] enhanced_DJI_20250217124952_0079_D_chunk_1_0_png.rf.72c196c2c76f20534fca5cd58fb808ad.jpg GT: 68 Pred: 68 TP: 64 FP:  4 FN:  4 Err:  +0
+  [  69/396] enhanced_DJI_20250217124952_0079_D_chunk_1_0_png.rf.85081043531cf80731e3b5ff71f94aee.jpg GT: 69 Pred: 70 TP: 63 FP:  7 FN:  6 Err:  +1
+  [  70/396] enhanced_DJI_20250217124952_0079_D_chunk_1_1_png.rf.060083d6382b4cfb8a42b4cfda9656f4.jpg GT: 23 Pred: 23 TP: 22 FP:  1 FN:  1 Err:  +0
+  [  71/396] enhanced_DJI_20250217124952_0079_D_chunk_1_1_png.rf.58beb12f39aeb82a8e85ed5f293cba7a.jpg GT: 22 Pred: 22 TP: 21 FP:  1 FN:  1 Err:  +0
+  [  72/396] enhanced_DJI_20250217124952_0079_D_chunk_1_1_png.rf.8365ec886ccb4efef8ec22a69df58c6f.jpg GT: 23 Pred: 25 TP: 23 FP:  2 FN:  0 Err:  +2
+  [  73/396] enhanced_DJI_20250217124954_0080_D_chunk_0_0_png.rf.6bba4dcbc5f77f7ea2ae3b0ed0e06cfd.jpg GT: 99 Pred:104 TP: 92 FP: 12 FN:  7 Err:  +5
+  [  74/396] enhanced_DJI_20250217124954_0080_D_chunk_0_0_png.rf.a94a12cc076a0d38e605bc37a025939f.jpg GT: 99 Pred:113 TP: 96 FP: 17 FN:  3 Err: +14
+  [  75/396] enhanced_DJI_20250217124954_0080_D_chunk_0_0_png.rf.e7963486cbf45e2764c838c8b6179d07.jpg GT: 99 Pred:113 TP: 96 FP: 17 FN:  3 Err: +14
+  [  76/396] enhanced_DJI_20250217124954_0080_D_chunk_1_0_png.rf.4bfbedf0a8bfe775dfe6c9dc415daa91.jpg GT: 72 Pred: 88 TP: 70 FP: 18 FN:  2 Err: +16
+  [  77/396] enhanced_DJI_20250217124954_0080_D_chunk_1_0_png.rf.ad112368b2aa0fcf907cbdd36c780cb9.jpg GT: 72 Pred: 79 TP: 69 FP: 10 FN:  3 Err:  +7
+  [  78/396] enhanced_DJI_20250217124954_0080_D_chunk_1_0_png.rf.f446a8cbd5089bfa239cb6b3de78ff5b.jpg GT: 72 Pred: 79 TP: 69 FP: 10 FN:  3 Err:  +7
+  [  79/396] enhanced_DJI_20250217124954_0080_D_chunk_1_1_png.rf.32c6bb5e225591757e6986ae0fdb5ef8.jpg GT: 22 Pred: 24 TP: 22 FP:  2 FN:  0 Err:  +2
+  [  80/396] enhanced_DJI_20250217124954_0080_D_chunk_1_1_png.rf.69a7f68fd8f486d1b01ccc49f422ad74.jpg GT: 22 Pred: 25 TP: 22 FP:  3 FN:  0 Err:  +3
+  [  81/396] enhanced_DJI_20250217124954_0080_D_chunk_1_1_png.rf.a72b428a44820f8752d84fec180e2ae7.jpg GT: 23 Pred: 26 TP: 23 FP:  3 FN:  0 Err:  +3
+  [  82/396] enhanced_DJI_20250217124956_0081_D_chunk_0_0_png.rf.5491514aa72bb26286dba0ae42893513.jpg GT:105 Pred:102 TP: 95 FP:  7 FN: 10 Err:  -3
+  [  83/396] enhanced_DJI_20250217124956_0081_D_chunk_0_0_png.rf.568bbe567149f709d8ab67389cd5fc25.jpg GT:105 Pred:102 TP: 95 FP:  7 FN: 10 Err:  -3
+  [  84/396] enhanced_DJI_20250217124956_0081_D_chunk_0_0_png.rf.83453b2ec44854f605a1bb579346f385.jpg GT:105 Pred:109 TP: 98 FP: 11 FN:  7 Err:  +4
+  [  85/396] enhanced_DJI_20250217124956_0081_D_chunk_0_1_png.rf.4441fab151adaa95bbd4216cff81b9d7.jpg GT: 33 Pred: 31 TP: 31 FP:  0 FN:  2 Err:  -2
+  [  86/396] enhanced_DJI_20250217124956_0081_D_chunk_0_1_png.rf.44d4aff6143a14a465b16a4c277e5f47.jpg GT: 33 Pred: 33 TP: 32 FP:  1 FN:  1 Err:  +0
+  [  87/396] enhanced_DJI_20250217124956_0081_D_chunk_0_1_png.rf.ca52b96491c992f8c5a2ed59d1c871ad.jpg GT: 33 Pred: 39 TP: 32 FP:  7 FN:  1 Err:  +6
+  [  88/396] enhanced_DJI_20250217124956_0081_D_chunk_1_0_png.rf.4e5408273e22980082b6132fd7c81ac8.jpg GT: 81 Pred: 92 TP: 78 FP: 14 FN:  3 Err: +11
+  [  89/396] enhanced_DJI_20250217124956_0081_D_chunk_1_0_png.rf.6680ad4752005a9c557f6d49f18e9764.jpg GT: 80 Pred: 90 TP: 75 FP: 15 FN:  5 Err: +10
+  [  90/396] enhanced_DJI_20250217124956_0081_D_chunk_1_0_png.rf.8cfbc7f9490641fcc9d4cf2b54dc190a.jpg GT: 81 Pred: 91 TP: 78 FP: 13 FN:  3 Err: +10
+  [  91/396] enhanced_DJI_20250217124958_0082_D_chunk_0_0_png.rf.2ef7edc5c0559f5dd7cfe5ebb13f1b12.jpg GT:107 Pred:116 TP:105 FP: 11 FN:  2 Err:  +9
+  [  92/396] enhanced_DJI_20250217124958_0082_D_chunk_0_0_png.rf.5cc7928de7563ff10ffc0418ae0b724a.jpg GT:107 Pred:107 TP:101 FP:  6 FN:  6 Err:  +0
+  [  93/396] enhanced_DJI_20250217124958_0082_D_chunk_0_0_png.rf.fa23eab0c37cb460db440b46b2dd7e1c.jpg GT:104 Pred:106 TP: 98 FP:  8 FN:  6 Err:  +2
+  [  94/396] enhanced_DJI_20250217124958_0082_D_chunk_0_1_png.rf.3833a7cb75e4494f41e454f033ed258e.jpg GT: 31 Pred: 34 TP: 28 FP:  6 FN:  3 Err:  +3
+  [  95/396] enhanced_DJI_20250217124958_0082_D_chunk_0_1_png.rf.4488065e690f55267160bcb203d81cb3.jpg GT: 31 Pred: 37 TP: 30 FP:  7 FN:  1 Err:  +6
+  [  96/396] enhanced_DJI_20250217124958_0082_D_chunk_0_1_png.rf.5587369d34e6fc5a38a4d1fade41ea7b.jpg GT: 31 Pred: 34 TP: 28 FP:  6 FN:  3 Err:  +3
+  [  97/396] enhanced_DJI_20250217125000_0083_D_chunk_1_1_png.rf.5e6782ffb13fb00cd5a11cc1a88dbdea.jpg GT: 39 Pred: 37 TP: 37 FP:  0 FN:  2 Err:  -2
+  [  98/396] enhanced_DJI_20250217125000_0083_D_chunk_1_1_png.rf.a96a6c22b43df5334b6e0f77f9cca07f.jpg GT: 38 Pred: 34 TP: 34 FP:  0 FN:  4 Err:  -4
+  [  99/396] enhanced_DJI_20250217125000_0083_D_chunk_1_1_png.rf.caa921061d18277ad94a5a2df9273db2.jpg GT: 39 Pred: 38 TP: 37 FP:  1 FN:  2 Err:  -1
+  [ 100/396] enhanced_DJI_20250217125002_0084_D_chunk_0_0_png.rf.19cab16a4575eac6e53cbd081e7f1f32.jpg GT: 81 Pred: 81 TP: 75 FP:  6 FN:  6 Err:  +0
+  [ 101/396] enhanced_DJI_20250217125002_0084_D_chunk_0_0_png.rf.24377d8a1d95410ec320215e696cee4a.jpg GT: 81 Pred: 81 TP: 74 FP:  7 FN:  7 Err:  +0
+  [ 102/396] enhanced_DJI_20250217125002_0084_D_chunk_0_0_png.rf.c77300a3dd7323092c90c61bda60f5a3.jpg GT: 81 Pred: 91 TP: 77 FP: 14 FN:  4 Err: +10
+  [ 103/396] enhanced_DJI_20250217125002_0084_D_chunk_1_1_png.rf.0823231e8887d303542eb1475993fdc5.jpg GT: 24 Pred: 26 TP: 23 FP:  3 FN:  1 Err:  +2
+  [ 104/396] enhanced_DJI_20250217125002_0084_D_chunk_1_1_png.rf.41cb0784c8e932cd28ed5e0cf07bbe97.jpg GT: 24 Pred: 28 TP: 24 FP:  4 FN:  0 Err:  +4
+  [ 105/396] enhanced_DJI_20250217125002_0084_D_chunk_1_1_png.rf.574c1f18bffb802dbcea3b948ee6bff4.jpg GT: 24 Pred: 28 TP: 23 FP:  5 FN:  1 Err:  +4
+  [ 106/396] enhanced_DJI_20250217125004_0085_D_chunk_0_0_png.rf.5307cb152e7943ae1d8f79135404d423.jpg GT: 57 Pred: 56 TP: 53 FP:  3 FN:  4 Err:  -1
+  [ 107/396] enhanced_DJI_20250217125004_0085_D_chunk_0_0_png.rf.968bf9e4940788eb116f3d47e073d383.jpg GT: 58 Pred: 63 TP: 55 FP:  8 FN:  3 Err:  +5
+  [ 108/396] enhanced_DJI_20250217125004_0085_D_chunk_0_0_png.rf.a67710dc28d189bb589fe6e7500c9095.jpg GT: 57 Pred: 55 TP: 52 FP:  3 FN:  5 Err:  -2
+  [ 109/396] enhanced_DJI_20250217125004_0085_D_chunk_1_1_png.rf.23e61c66a9394438a1303504f173d284.jpg GT: 34 Pred: 34 TP: 31 FP:  3 FN:  3 Err:  +0
+  [ 110/396] enhanced_DJI_20250217125004_0085_D_chunk_1_1_png.rf.e852679e00da9d025a33033c8551a058.jpg GT: 34 Pred: 31 TP: 29 FP:  2 FN:  5 Err:  -3
+  [ 111/396] enhanced_DJI_20250217125004_0085_D_chunk_1_1_png.rf.edbe8e943211496845d6da0896cf056e.jpg GT: 34 Pred: 34 TP: 31 FP:  3 FN:  3 Err:  +0
+  [ 112/396] enhanced_DJI_20250217125006_0086_D_chunk_0_1_png.rf.2b0699dd5a91a73e03f6efade267c4f8.jpg GT:  7 Pred:  8 TP:  7 FP:  1 FN:  0 Err:  +1
+  [ 113/396] enhanced_DJI_20250217125006_0086_D_chunk_0_1_png.rf.71f799a403a8b6b93fb7d4616b621792.jpg GT:  7 Pred:  7 TP:  6 FP:  1 FN:  1 Err:  +0
+  [ 114/396] enhanced_DJI_20250217125006_0086_D_chunk_0_1_png.rf.9ae0fde215cb6a3729299c7cb8cb82c1.jpg GT:  7 Pred:  8 TP:  7 FP:  1 FN:  0 Err:  +1
+  [ 115/396] enhanced_DJI_20250217125020_0093_D_chunk_0_1_png.rf.40880a6a156df877b9d23fba8829296d.jpg GT: 85 Pred: 77 TP: 72 FP:  5 FN: 13 Err:  -8
+  [ 116/396] enhanced_DJI_20250217125020_0093_D_chunk_0_1_png.rf.8ab4cc0b399ec0d6812a26aac308ced8.jpg GT: 85 Pred: 78 TP: 75 FP:  3 FN: 10 Err:  -7
+  [ 117/396] enhanced_DJI_20250217125020_0093_D_chunk_0_1_png.rf.8f4909d0efb403b8b827ad7290cc24e6.jpg GT: 85 Pred: 79 TP: 75 FP:  4 FN: 10 Err:  -6
+  [ 118/396] enhanced_DJI_20250217125020_0093_D_chunk_0_2_png.rf.3a7109e0dd792a66986337941fd522dc.jpg GT: 79 Pred: 77 TP: 71 FP:  6 FN:  8 Err:  -2
+  [ 119/396] enhanced_DJI_20250217125020_0093_D_chunk_0_2_png.rf.7342557c27b43c583bbeee524847d7aa.jpg GT: 79 Pred: 75 TP: 70 FP:  5 FN:  9 Err:  -4
+  [ 120/396] enhanced_DJI_20250217125020_0093_D_chunk_0_2_png.rf.f90ef7541514c07439b323cf7a29de72.jpg GT: 79 Pred: 74 TP: 71 FP:  3 FN:  8 Err:  -5
+  [ 121/396] enhanced_DJI_20250217125022_0094_D_chunk_0_1_png.rf.707211aae2d803d50ce4171c26e7b2b8.jpg GT: 84 Pred: 96 TP: 80 FP: 16 FN:  4 Err: +12
+  [ 122/396] enhanced_DJI_20250217125022_0094_D_chunk_0_1_png.rf.c90a8ec0531fb5ec98522a695d582b50.jpg GT: 83 Pred: 90 TP: 80 FP: 10 FN:  3 Err:  +7
+  [ 123/396] enhanced_DJI_20250217125022_0094_D_chunk_0_1_png.rf.e1c451b8dd7bfc27b299ef6965984ab7.jpg GT: 84 Pred:105 TP: 82 FP: 23 FN:  2 Err: +21
+  [ 124/396] enhanced_DJI_20250217125022_0094_D_chunk_0_2_png.rf.092b56cde86e9b6a8071d20de697d15b.jpg GT: 70 Pred: 76 TP: 67 FP:  9 FN:  3 Err:  +6
+  [ 125/396] enhanced_DJI_20250217125022_0094_D_chunk_0_2_png.rf.1e4183fba5b92d0f1bfa2fc1b9cf928f.jpg GT: 70 Pred: 77 TP: 68 FP:  9 FN:  2 Err:  +7
+  [ 126/396] enhanced_DJI_20250217125022_0094_D_chunk_0_2_png.rf.98780937766dff9174e116c028989552.jpg GT: 70 Pred: 79 TP: 68 FP: 11 FN:  2 Err:  +9
+  [ 127/396] enhanced_DJI_20250217125022_0094_D_chunk_1_1_png.rf.84bd0d470bdb8c1d377b8de1538dc4c8.jpg GT: 28 Pred: 30 TP: 28 FP:  2 FN:  0 Err:  +2
+  [ 128/396] enhanced_DJI_20250217125022_0094_D_chunk_1_1_png.rf.ab3672f4b3289cd6dfc70f7a9460c8c7.jpg GT: 28 Pred: 32 TP: 28 FP:  4 FN:  0 Err:  +4
+  [ 129/396] enhanced_DJI_20250217125022_0094_D_chunk_1_1_png.rf.e66b58085f8142e804537d563956ec8a.jpg GT: 28 Pred: 30 TP: 28 FP:  2 FN:  0 Err:  +2
+  [ 130/396] enhanced_DJI_20250217125022_0094_D_chunk_1_2_png.rf.00ac451a7b86d4d39d40bee1848b6e7d.jpg GT: 38 Pred: 35 TP: 33 FP:  2 FN:  5 Err:  -3
+  [ 131/396] enhanced_DJI_20250217125022_0094_D_chunk_1_2_png.rf.51fc57765addda1aa1bda0c39a89bdb7.jpg GT: 38 Pred: 36 TP: 35 FP:  1 FN:  3 Err:  -2
+  [ 132/396] enhanced_DJI_20250217125022_0094_D_chunk_1_2_png.rf.cf8bf5b2d3e5ce11904c6918ae956cf4.jpg GT: 38 Pred: 37 TP: 36 FP:  1 FN:  2 Err:  -1
+  [ 133/396] enhanced_DJI_20250217125024_0095_D_chunk_0_1_png.rf.041900af8d2c8ee9b29680957f6c3836.jpg GT:100 Pred: 82 TP: 80 FP:  2 FN: 20 Err: -18
+  [ 134/396] enhanced_DJI_20250217125024_0095_D_chunk_0_1_png.rf.5dec6ce3425278f436ad59c8334676be.jpg GT:100 Pred: 90 TP: 85 FP:  5 FN: 15 Err: -10
+  [ 135/396] enhanced_DJI_20250217125024_0095_D_chunk_0_1_png.rf.668b94a4d513ee1e4cc2d04cefb95748.jpg GT: 99 Pred: 79 TP: 77 FP:  2 FN: 22 Err: -20
+  [ 136/396] enhanced_DJI_20250217125024_0095_D_chunk_0_2_png.rf.6b560fbfefd9389f113471009b707982.jpg GT: 86 Pred: 88 TP: 81 FP:  7 FN:  5 Err:  +2
+  [ 137/396] enhanced_DJI_20250217125024_0095_D_chunk_0_2_png.rf.89653bda1253e4da63ddcd8ce4ff4315.jpg GT: 86 Pred: 87 TP: 82 FP:  5 FN:  4 Err:  +1
+  [ 138/396] enhanced_DJI_20250217125024_0095_D_chunk_0_2_png.rf.f537558aa8cfd29402a023c82f813f9b.jpg GT: 85 Pred: 85 TP: 77 FP:  8 FN:  8 Err:  +0
+  [ 139/396] enhanced_DJI_20250217125024_0095_D_chunk_1_0_png.rf.879d71bf95e3c9906794d83794fa9c16.jpg GT:  7 Pred:  8 TP:  7 FP:  1 FN:  0 Err:  +1
+  [ 140/396] enhanced_DJI_20250217125024_0095_D_chunk_1_0_png.rf.90dc06de63467f09b01780a05198da9e.jpg GT:  7 Pred:  7 TP:  7 FP:  0 FN:  0 Err:  +0
+  [ 141/396] enhanced_DJI_20250217125024_0095_D_chunk_1_0_png.rf.a657591bae412a59303fac4ecfe98497.jpg GT:  7 Pred:  9 TP:  7 FP:  2 FN:  0 Err:  +2
+  [ 142/396] enhanced_DJI_20250217125024_0095_D_chunk_1_2_png.rf.506e1871da7b51cabc2f4f0ad5156ac7.jpg GT: 68 Pred: 63 TP: 59 FP:  4 FN:  9 Err:  -5
+  [ 143/396] enhanced_DJI_20250217125024_0095_D_chunk_1_2_png.rf.70e246a8321f296d18042e15242c2467.jpg GT: 69 Pred: 68 TP: 61 FP:  7 FN:  8 Err:  -1
+  [ 144/396] enhanced_DJI_20250217125024_0095_D_chunk_1_2_png.rf.731a4eee2b58369b7124b97af26c3b76.jpg GT: 68 Pred: 66 TP: 59 FP:  7 FN:  9 Err:  -2
+  [ 145/396] enhanced_DJI_20250217125028_0097_D_chunk_1_1_png.rf.09a20a4793fb2539ba89d852326fe723.jpg GT: 81 Pred: 92 TP: 80 FP: 12 FN:  1 Err: +11
+  [ 146/396] enhanced_DJI_20250217125028_0097_D_chunk_1_1_png.rf.654fa9b6e079f888703baaf61cb72d08.jpg GT: 80 Pred: 82 TP: 76 FP:  6 FN:  4 Err:  +2
+  [ 147/396] enhanced_DJI_20250217125028_0097_D_chunk_1_1_png.rf.ebb582fc890aead47d02946bfc9a4f5a.jpg GT: 81 Pred: 84 TP: 78 FP:  6 FN:  3 Err:  +3
+  [ 148/396] enhanced_DJI_20250217125030_0098_D_chunk_0_2_png.rf.1ee4e9541059b963dd68b1589fa26ac0.jpg GT:105 Pred:104 TP: 96 FP:  8 FN:  9 Err:  -1
+  [ 149/396] enhanced_DJI_20250217125030_0098_D_chunk_0_2_png.rf.54d7df9766f5ed07aae9a1f866c17602.jpg GT:104 Pred: 95 TP: 91 FP:  4 FN: 13 Err:  -9
+  [ 150/396] enhanced_DJI_20250217125030_0098_D_chunk_0_2_png.rf.b5c3ebc4f424c8c42c78ff34d8c2b745.jpg GT:104 Pred: 95 TP: 90 FP:  5 FN: 14 Err:  -9
+  [ 151/396] enhanced_DJI_20250217125032_0099_D_chunk_0_1_png.rf.0d29d4d81971d10ca7d11b0c5a6d15aa.jpg GT: 68 Pred: 73 TP: 67 FP:  6 FN:  1 Err:  +5
+  [ 152/396] enhanced_DJI_20250217125032_0099_D_chunk_0_1_png.rf.1e03257ab3df1d4842ae997e0833ed87.jpg GT: 69 Pred: 73 TP: 67 FP:  6 FN:  2 Err:  +4
+  [ 153/396] enhanced_DJI_20250217125032_0099_D_chunk_0_1_png.rf.525c3b0e7a0f12b404c9346aa25cd3ad.jpg GT: 69 Pred: 76 TP: 68 FP:  8 FN:  1 Err:  +7
+  [ 154/396] enhanced_DJI_20250217125032_0099_D_chunk_0_2_png.rf.aa3a588317b5f57aec326e6096917647.jpg GT: 71 Pred: 74 TP: 70 FP:  4 FN:  1 Err:  +3
+  [ 155/396] enhanced_DJI_20250217125032_0099_D_chunk_0_2_png.rf.ba6f6795cc0c0e39980fa76ace3ac9ac.jpg GT: 71 Pred: 74 TP: 68 FP:  6 FN:  3 Err:  +3
+  [ 156/396] enhanced_DJI_20250217125032_0099_D_chunk_0_2_png.rf.f31c6afa5033a0e5fc3092fdf18d4ff4.jpg GT: 71 Pred: 74 TP: 67 FP:  7 FN:  4 Err:  +3
+  [ 157/396] enhanced_DJI_20250217125032_0099_D_chunk_1_1_png.rf.155990b11cce9c81b4b818267182b7f8.jpg GT: 84 Pred: 94 TP: 78 FP: 16 FN:  6 Err: +10
+  [ 158/396] enhanced_DJI_20250217125032_0099_D_chunk_1_1_png.rf.1edb87b63347f654eb088e5e710627f0.jpg GT: 84 Pred: 85 TP: 74 FP: 11 FN: 10 Err:  +1
+  [ 159/396] enhanced_DJI_20250217125032_0099_D_chunk_1_1_png.rf.42adb492ecab1c3025a1bc4154c5405b.jpg GT: 84 Pred: 86 TP: 76 FP: 10 FN:  8 Err:  +2
+  [ 160/396] enhanced_DJI_20250217125034_0100_D_chunk_0_2_png.rf.9ebf6a51b840c26c5841b9b8a7c8f817.jpg GT: 46 Pred: 44 TP: 44 FP:  0 FN:  2 Err:  -2
+  [ 161/396] enhanced_DJI_20250217125034_0100_D_chunk_0_2_png.rf.d91e8ad38d4aa2facf86509dabf98513.jpg GT: 45 Pred: 45 TP: 44 FP:  1 FN:  1 Err:  +0
+  [ 162/396] enhanced_DJI_20250217125034_0100_D_chunk_0_2_png.rf.e00a6c5c4fe2f12407adf04f847ade46.jpg GT: 46 Pred: 47 TP: 45 FP:  2 FN:  1 Err:  +1
+  [ 163/396] enhanced_DJI_20250217125034_0100_D_chunk_1_2_png.rf.1b50a51d086f2d033201b7e0fa823a86.jpg GT: 74 Pred: 80 TP: 67 FP: 13 FN:  7 Err:  +6
+  [ 164/396] enhanced_DJI_20250217125034_0100_D_chunk_1_2_png.rf.91ff451b2038683ba71417e658210f4a.jpg GT: 73 Pred: 75 TP: 66 FP:  9 FN:  7 Err:  +2
+  [ 165/396] enhanced_DJI_20250217125034_0100_D_chunk_1_2_png.rf.f9689005ce431d9680b52579e63e3bf1.jpg GT: 74 Pred: 73 TP: 66 FP:  7 FN:  8 Err:  -1
+  [ 166/396] enhanced_DJI_20250217125036_0101_D_chunk_1_1_png.rf.1bcb77a74865b2124f342e9dae863c23.jpg GT: 91 Pred: 98 TP: 84 FP: 14 FN:  7 Err:  +7
+  [ 167/396] enhanced_DJI_20250217125036_0101_D_chunk_1_1_png.rf.6619236177b4f40352685fc0ebc12bb3.jpg GT: 91 Pred: 92 TP: 83 FP:  9 FN:  8 Err:  +1
+  [ 168/396] enhanced_DJI_20250217125036_0101_D_chunk_1_1_png.rf.ac6cd50b09a70521692a49dbf30e8baa.jpg GT: 91 Pred: 96 TP: 84 FP: 12 FN:  7 Err:  +5
+  [ 169/396] enhanced_DJI_20250217125036_0101_D_chunk_1_2_png.rf.43fd83fd7cddb532ca40d50b3d100941.jpg GT: 78 Pred: 75 TP: 68 FP:  7 FN: 10 Err:  -3
+  [ 170/396] enhanced_DJI_20250217125036_0101_D_chunk_1_2_png.rf.c43c6e4e7006563dda0e4d5c6d043f9d.jpg GT: 79 Pred: 85 TP: 72 FP: 13 FN:  7 Err:  +6
+  [ 171/396] enhanced_DJI_20250217125036_0101_D_chunk_1_2_png.rf.fc2c7a440dc0cd60bad1910ef18d4a1f.jpg GT: 78 Pred: 75 TP: 67 FP:  8 FN: 11 Err:  -3
+  [ 172/396] enhanced_DJI_20250217125038_0102_D_chunk_0_2_png.rf.8d915da8f286a31d3cac55696bfe1360.jpg GT: 33 Pred: 34 TP: 30 FP:  4 FN:  3 Err:  +1
+  [ 173/396] enhanced_DJI_20250217125038_0102_D_chunk_0_2_png.rf.9ffb9359b9b8bfc6078261d468bd0eae.jpg GT: 33 Pred: 40 TP: 32 FP:  8 FN:  1 Err:  +7
+  [ 174/396] enhanced_DJI_20250217125038_0102_D_chunk_0_2_png.rf.acbcdea9c432b7614f51bfc2ace035d8.jpg GT: 32 Pred: 34 TP: 30 FP:  4 FN:  2 Err:  +2
+  [ 175/396] enhanced_DJI_20250217125038_0102_D_chunk_1_1_png.rf.54f629763792181f3bc0cc901baf85b0.jpg GT: 70 Pred: 74 TP: 68 FP:  6 FN:  2 Err:  +4
+  [ 176/396] enhanced_DJI_20250217125038_0102_D_chunk_1_1_png.rf.6aac66c005534d794754880a51c22ff4.jpg GT: 70 Pred: 80 TP: 69 FP: 11 FN:  1 Err: +10
+  [ 177/396] enhanced_DJI_20250217125038_0102_D_chunk_1_1_png.rf.9056feb3faba19a4f770c5d230b83ae2.jpg GT: 70 Pred: 74 TP: 69 FP:  5 FN:  1 Err:  +4
+  [ 178/396] enhanced_DJI_20250217125040_0103_D_chunk_0_1_png.rf.341bc59b35beae6613b73fcb645741a6.jpg GT: 59 Pred: 59 TP: 51 FP:  8 FN:  8 Err:  +0
+  [ 179/396] enhanced_DJI_20250217125040_0103_D_chunk_0_1_png.rf.5d5d6cf04ac9760084b697913d08f3f1.jpg GT: 59 Pred: 60 TP: 53 FP:  7 FN:  6 Err:  +1
+  [ 180/396] enhanced_DJI_20250217125040_0103_D_chunk_0_1_png.rf.ed3287fde4c71c7a58ab574def38cf18.jpg GT: 58 Pred: 55 TP: 51 FP:  4 FN:  7 Err:  -3
+  [ 181/396] enhanced_DJI_20250217125042_0104_D_chunk_1_1_png.rf.1c1f6cbddf8a050d30bf92522391375b.jpg GT: 64 Pred: 60 TP: 54 FP:  6 FN: 10 Err:  -4
+  [ 182/396] enhanced_DJI_20250217125042_0104_D_chunk_1_1_png.rf.2fff804e52499ad57bdaffc9dcfe1b9a.jpg GT: 64 Pred: 53 TP: 50 FP:  3 FN: 14 Err: -11
+  [ 183/396] enhanced_DJI_20250217125042_0104_D_chunk_1_1_png.rf.5212932f0db5b00db319ab7063030261.jpg GT: 63 Pred: 49 TP: 47 FP:  2 FN: 16 Err: -14
+  [ 184/396] enhanced_DJI_20250217125042_0104_D_chunk_1_2_png.rf.7af90733ecbdec9b5badfffdb9a86f19.jpg GT:  9 Pred: 10 TP:  8 FP:  2 FN:  1 Err:  +1
+  [ 185/396] enhanced_DJI_20250217125042_0104_D_chunk_1_2_png.rf.80dce43f89835c0ee184c978c371e46b.jpg GT: 11 Pred: 13 TP: 10 FP:  3 FN:  1 Err:  +2
+  [ 186/396] enhanced_DJI_20250217125042_0104_D_chunk_1_2_png.rf.8ff50ac90dae0cdc40c367ed48c26826.jpg GT: 11 Pred: 14 TP: 10 FP:  4 FN:  1 Err:  +3
+  [ 187/396] enhanced_DJI_20250217125044_0105_D_chunk_0_1_png.rf.00917f23d911d32384921c54b971fd24.jpg GT:101 Pred: 92 TP: 83 FP:  9 FN: 18 Err:  -9
+  [ 188/396] enhanced_DJI_20250217125044_0105_D_chunk_0_1_png.rf.0fc7f2a64d37198c5bfaaab201e7c891.jpg GT:101 Pred: 89 TP: 80 FP:  9 FN: 21 Err: -12
+  [ 189/396] enhanced_DJI_20250217125044_0105_D_chunk_0_1_png.rf.cc30302a428bc50b985cfff6a53f70e8.jpg GT:101 Pred: 94 TP: 86 FP:  8 FN: 15 Err:  -7
+  [ 190/396] enhanced_DJI_20250217125044_0105_D_chunk_0_2_png.rf.a28ca348e06790e37adf8216e7ce3a0b.jpg GT:105 Pred:107 TP:101 FP:  6 FN:  4 Err:  +2
+  [ 191/396] enhanced_DJI_20250217125044_0105_D_chunk_0_2_png.rf.d6a7799f65a16c291c4973eef8f3a903.jpg GT:104 Pred:104 TP:100 FP:  4 FN:  4 Err:  +0
+  [ 192/396] enhanced_DJI_20250217125044_0105_D_chunk_0_2_png.rf.e33677f397dcfa0585b51143806ae087.jpg GT:104 Pred:101 TP: 97 FP:  4 FN:  7 Err:  -3
+  [ 193/396] enhanced_DJI_20250217125044_0105_D_chunk_1_1_png.rf.35c6ad39fca2d937688e542892113b90.jpg GT: 51 Pred: 58 TP: 50 FP:  8 FN:  1 Err:  +7
+  [ 194/396] enhanced_DJI_20250217125044_0105_D_chunk_1_1_png.rf.399cd68b436dca8165f735bdbb33d329.jpg GT: 51 Pred: 51 TP: 46 FP:  5 FN:  5 Err:  +0
+  [ 195/396] enhanced_DJI_20250217125044_0105_D_chunk_1_1_png.rf.9a392c6db214297fa44d2dfe65c9f3f2.jpg GT: 51 Pred: 54 TP: 48 FP:  6 FN:  3 Err:  +3
+  [ 196/396] enhanced_DJI_20250217125046_0106_D_chunk_0_2_png.rf.0d90756013605d6266d5a51aceaeac3e.jpg GT: 76 Pred: 82 TP: 71 FP: 11 FN:  5 Err:  +6
+  [ 197/396] enhanced_DJI_20250217125046_0106_D_chunk_0_2_png.rf.20886f3ea0fbfeadeaeea73ea649b953.jpg GT: 75 Pred: 79 TP: 70 FP:  9 FN:  5 Err:  +4
+  [ 198/396] enhanced_DJI_20250217125046_0106_D_chunk_0_2_png.rf.c63531107ee2c9569e905b1e3311f016.jpg GT: 77 Pred: 87 TP: 73 FP: 14 FN:  4 Err: +10
+  [ 199/396] enhanced_DJI_20250217125046_0106_D_chunk_1_2_png.rf.0b2624c18b7cd30186cfa536f0421284.jpg GT:108 Pred: 82 TP: 80 FP:  2 FN: 28 Err: -26
+  [ 200/396] enhanced_DJI_20250217125046_0106_D_chunk_1_2_png.rf.b8a37b4b24822b61697aa127a6b4ba91.jpg GT:109 Pred: 94 TP: 85 FP:  9 FN: 24 Err: -15
+  [ 201/396] enhanced_DJI_20250217125046_0106_D_chunk_1_2_png.rf.c4bf6b6735a7476f68c70b6a8aa1f19b.jpg GT:109 Pred: 85 TP: 83 FP:  2 FN: 26 Err: -24
+  [ 202/396] enhanced_DJI_20250217125048_0107_D_chunk_0_1_png.rf.086b3575ee9834d60171e27672cb9b1d.jpg GT: 79 Pred: 74 TP: 68 FP:  6 FN: 11 Err:  -5
+  [ 203/396] enhanced_DJI_20250217125048_0107_D_chunk_0_1_png.rf.4eea6a96ac7510b5aeb2b6da99690a1e.jpg GT: 79 Pred:100 TP: 76 FP: 24 FN:  3 Err: +21
+  [ 204/396] enhanced_DJI_20250217125048_0107_D_chunk_0_1_png.rf.9fe8dece8855f88642d7ad7129afb9d4.jpg GT: 79 Pred: 78 TP: 68 FP: 10 FN: 11 Err:  -1
+  [ 205/396] enhanced_DJI_20250217125048_0107_D_chunk_0_2_png.rf.0d54029305af45294aaee752e2e06c4c.jpg GT: 65 Pred: 63 TP: 59 FP:  4 FN:  6 Err:  -2
+  [ 206/396] enhanced_DJI_20250217125048_0107_D_chunk_0_2_png.rf.578d436035629fd23d0e42bb5e3bb6dd.jpg GT: 65 Pred: 61 TP: 54 FP:  7 FN: 11 Err:  -4
+  [ 207/396] enhanced_DJI_20250217125048_0107_D_chunk_0_2_png.rf.6fa452dad6a036630bd080db6c5dc14d.jpg GT: 65 Pred: 60 TP: 56 FP:  4 FN:  9 Err:  -5
+  [ 208/396] enhanced_DJI_20250217125048_0107_D_chunk_1_2_png.rf.5cb45410b1c7a16fbd24dbfec671d858.jpg GT:122 Pred:111 TP: 98 FP: 13 FN: 24 Err: -11
+  [ 209/396] enhanced_DJI_20250217125048_0107_D_chunk_1_2_png.rf.d767bdb2b53109fa8ad5d4218d8a0d64.jpg GT:122 Pred:108 TP: 98 FP: 10 FN: 24 Err: -14
+  [ 210/396] enhanced_DJI_20250217125048_0107_D_chunk_1_2_png.rf.f5a75d457cf1b42468970b328c5f37ba.jpg GT:122 Pred:120 TP:101 FP: 19 FN: 21 Err:  -2
+  [ 211/396] enhanced_DJI_20250217125050_0108_D_chunk_0_1_png.rf.a859d417eacb3796d27c2d5a9daf104a.jpg GT: 93 Pred: 97 TP: 85 FP: 12 FN:  8 Err:  +4
+  [ 212/396] enhanced_DJI_20250217125050_0108_D_chunk_0_1_png.rf.ca1eb46d736ba7c1b350b4683b596d74.jpg GT: 93 Pred:114 TP: 89 FP: 25 FN:  4 Err: +21
+  [ 213/396] enhanced_DJI_20250217125050_0108_D_chunk_0_1_png.rf.d0cffc69b7ce7d38977ee49555e2d790.jpg GT: 93 Pred:100 TP: 87 FP: 13 FN:  6 Err:  +7
+  [ 214/396] enhanced_DJI_20250217125050_0108_D_chunk_0_2_png.rf.30742566628fd4a8e0312a80cfc46a28.jpg GT: 75 Pred: 72 TP: 69 FP:  3 FN:  6 Err:  -3
+  [ 215/396] enhanced_DJI_20250217125050_0108_D_chunk_0_2_png.rf.9826fc17fab8c53b86facde2da054418.jpg GT: 75 Pred: 82 TP: 72 FP: 10 FN:  3 Err:  +7
+  [ 216/396] enhanced_DJI_20250217125050_0108_D_chunk_0_2_png.rf.c8e58e9e18cfa057f13da4209c8ffd48.jpg GT: 75 Pred: 75 TP: 71 FP:  4 FN:  4 Err:  +0
+  [ 217/396] enhanced_DJI_20250217125050_0108_D_chunk_1_2_png.rf.27235089c98631a87436b8fef4931c9c.jpg GT: 94 Pred: 96 TP: 83 FP: 13 FN: 11 Err:  +2
+  [ 218/396] enhanced_DJI_20250217125050_0108_D_chunk_1_2_png.rf.758f3c5194df4f942f8293e28d9d7db4.jpg GT: 94 Pred:102 TP: 85 FP: 17 FN:  9 Err:  +8
+  [ 219/396] enhanced_DJI_20250217125050_0108_D_chunk_1_2_png.rf.82d5397b710c4931414fd5e3107f0473.jpg GT: 94 Pred: 96 TP: 82 FP: 14 FN: 12 Err:  +2
+  [ 220/396] enhanced_DJI_20250217125052_0109_D_chunk_0_2_png.rf.0785a73ba8afba4a1987c2cb8fd1b192.jpg GT:111 Pred: 98 TP: 94 FP:  4 FN: 17 Err: -13
+  [ 221/396] enhanced_DJI_20250217125052_0109_D_chunk_0_2_png.rf.3a10fda5790f4e3d6ead61057907e054.jpg GT:111 Pred:104 TP: 99 FP:  5 FN: 12 Err:  -7
+  [ 222/396] enhanced_DJI_20250217125052_0109_D_chunk_0_2_png.rf.a61b8fa46eab429a39a2386347311834.jpg GT:111 Pred:107 TP:101 FP:  6 FN: 10 Err:  -4
+  [ 223/396] enhanced_DJI_20250217125052_0109_D_chunk_1_2_png.rf.59d3c0978ebeef3cf0e729c60ecebe80.jpg GT: 75 Pred: 70 TP: 62 FP:  8 FN: 13 Err:  -5
+  [ 224/396] enhanced_DJI_20250217125052_0109_D_chunk_1_2_png.rf.85a80bd3641de114f64dd00e8420a3c8.jpg GT: 75 Pred: 74 TP: 62 FP: 12 FN: 13 Err:  -1
+  [ 225/396] enhanced_DJI_20250217125052_0109_D_chunk_1_2_png.rf.ee6b72c9e485a3f943e15904da499cda.jpg GT: 75 Pred: 74 TP: 62 FP: 12 FN: 13 Err:  -1
+  [ 226/396] enhanced_DJI_20250217125054_0110_D_chunk_0_1_png.rf.abe8b7218c94e0dd1e4347a08a33f3ba.jpg GT: 87 Pred: 96 TP: 84 FP: 12 FN:  3 Err:  +9
+  [ 227/396] enhanced_DJI_20250217125054_0110_D_chunk_0_1_png.rf.eb0c3ef142b57df963cba5768e119c8f.jpg GT: 87 Pred:102 TP: 84 FP: 18 FN:  3 Err: +15
+  [ 228/396] enhanced_DJI_20250217125054_0110_D_chunk_0_1_png.rf.f214ed8370bafbe901083a49ed3c3afd.jpg GT: 87 Pred: 87 TP: 79 FP:  8 FN:  8 Err:  +0
+  [ 229/396] enhanced_DJI_20250217125054_0110_D_chunk_0_2_png.rf.6b20c4e67ecc58fa749cb6c1bcdb15fc.jpg GT: 77 Pred: 93 TP: 74 FP: 19 FN:  3 Err: +16
+  [ 230/396] enhanced_DJI_20250217125054_0110_D_chunk_0_2_png.rf.9a71a5627b36354ecfc9aadebb6b24fd.jpg GT: 77 Pred: 86 TP: 76 FP: 10 FN:  1 Err:  +9
+  [ 231/396] enhanced_DJI_20250217125054_0110_D_chunk_0_2_png.rf.af326128b5b62c0f258f5a928fa98db3.jpg GT: 76 Pred: 86 TP: 75 FP: 11 FN:  1 Err: +10
+  [ 232/396] enhanced_DJI_20250217125054_0110_D_chunk_1_1_png.rf.2da59873d0466417af2c65206fd1f09d.jpg GT: 91 Pred:111 TP: 87 FP: 24 FN:  4 Err: +20
+  [ 233/396] enhanced_DJI_20250217125054_0110_D_chunk_1_1_png.rf.97baca0eef43c7ee251509499908facf.jpg GT: 91 Pred: 97 TP: 83 FP: 14 FN:  8 Err:  +6
+  [ 234/396] enhanced_DJI_20250217125054_0110_D_chunk_1_1_png.rf.e3caa315bd305648a61c8dc8db272178.jpg GT: 91 Pred:100 TP: 86 FP: 14 FN:  5 Err:  +9
+  [ 235/396] enhanced_DJI_20250217125054_0110_D_chunk_1_2_png.rf.3b133fd25ddaf0dbe130882e83e05221.jpg GT: 62 Pred: 56 TP: 54 FP:  2 FN:  8 Err:  -6
+  [ 236/396] enhanced_DJI_20250217125054_0110_D_chunk_1_2_png.rf.ce90124407e7f384a8a35e6a40bcc60e.jpg GT: 63 Pred: 64 TP: 59 FP:  5 FN:  4 Err:  +1
+  [ 237/396] enhanced_DJI_20250217125054_0110_D_chunk_1_2_png.rf.e328ec1cf58f074e19270d135cff7c4e.jpg GT: 63 Pred: 58 TP: 55 FP:  3 FN:  8 Err:  -5
+  [ 238/396] enhanced_DJI_20250217125056_0111_D_chunk_0_1_png.rf.70df47a0e00639bf7f0e45278d4cdf01.jpg GT: 63 Pred: 57 TP: 53 FP:  4 FN: 10 Err:  -6
+  [ 239/396] enhanced_DJI_20250217125056_0111_D_chunk_0_1_png.rf.affafb613bd141284e4e13909524e22a.jpg GT: 63 Pred: 56 TP: 53 FP:  3 FN: 10 Err:  -7
+  [ 240/396] enhanced_DJI_20250217125056_0111_D_chunk_0_1_png.rf.dba188391a64215afe0775f0999546e6.jpg GT: 63 Pred: 62 TP: 56 FP:  6 FN:  7 Err:  -1
+  [ 241/396] enhanced_DJI_20250217125056_0111_D_chunk_1_2_png.rf.836d220b5f6944494c26efaab81fea98.jpg GT: 84 Pred: 74 TP: 67 FP:  7 FN: 17 Err: -10
+  [ 242/396] enhanced_DJI_20250217125056_0111_D_chunk_1_2_png.rf.983c22b69a4f578c014485ea24503929.jpg GT: 84 Pred: 82 TP: 72 FP: 10 FN: 12 Err:  -2
+  [ 243/396] enhanced_DJI_20250217125056_0111_D_chunk_1_2_png.rf.d97ff83ace05a1b1d2490c7d76ca5f6f.jpg GT: 83 Pred: 67 TP: 61 FP:  6 FN: 22 Err: -16
+  [ 244/396] enhanced_DJI_20250217125058_0112_D_chunk_0_1_png.rf.66fb80522b6d6f2a793f6a1a24172dfc.jpg GT: 22 Pred: 20 TP: 20 FP:  0 FN:  2 Err:  -2
+  [ 245/396] enhanced_DJI_20250217125058_0112_D_chunk_0_1_png.rf.9b40ab2b0e77a44122329ed8607e7725.jpg GT: 23 Pred: 26 TP: 21 FP:  5 FN:  2 Err:  +3
+  [ 246/396] enhanced_DJI_20250217125058_0112_D_chunk_0_1_png.rf.fbc2fff45d6521b75583ccb13e594a49.jpg GT: 23 Pred: 28 TP: 23 FP:  5 FN:  0 Err:  +5
+  [ 247/396] enhanced_DJI_20250217125058_0112_D_chunk_1_1_png.rf.16f713a5f58d4f749d9f24379e899dd6.jpg GT:110 Pred:114 TP:101 FP: 13 FN:  9 Err:  +4
+  [ 248/396] enhanced_DJI_20250217125058_0112_D_chunk_1_1_png.rf.572c5fbe902459734bc60efdee98acd9.jpg GT:110 Pred:101 TP: 94 FP:  7 FN: 16 Err:  -9
+  [ 249/396] enhanced_DJI_20250217125058_0112_D_chunk_1_1_png.rf.e36bffb552a4ac6eadec11dbc28dafcc.jpg GT:110 Pred:115 TP:101 FP: 14 FN:  9 Err:  +5
+  [ 250/396] enhanced_DJI_20250217125110_0118_D_chunk_0_2_png.rf.457d36d37e393fbf2405af8e63ce89c7.jpg GT: 97 Pred:248 TP: 92 FP:156 FN:  5 Err:+151
+  [ 251/396] enhanced_DJI_20250217125110_0118_D_chunk_0_2_png.rf.c51cc8a4ca7600bec5adc8991033918b.jpg GT: 97 Pred:215 TP: 91 FP:124 FN:  6 Err:+118
+  [ 252/396] enhanced_DJI_20250217125110_0118_D_chunk_0_2_png.rf.ca40f38752dc299bfe873c864e611af6.jpg GT: 96 Pred:208 TP: 92 FP:116 FN:  4 Err:+112
+  [ 253/396] enhanced_DJI_20250217125112_0119_D_chunk_0_1_png.rf.021715fee00bb42a884418769e762087.jpg GT: 53 Pred: 35 TP: 34 FP:  1 FN: 19 Err: -18
+  [ 254/396] enhanced_DJI_20250217125112_0119_D_chunk_0_1_png.rf.9cd835dc01c59121a3eb6c59af8c5b82.jpg GT: 54 Pred: 46 TP: 43 FP:  3 FN: 11 Err:  -8
+  [ 255/396] enhanced_DJI_20250217125112_0119_D_chunk_0_1_png.rf.b56628138a832d59e56fc52821093df7.jpg GT: 54 Pred: 39 TP: 37 FP:  2 FN: 17 Err: -15
+  [ 256/396] enhanced_DJI_20250217125112_0119_D_chunk_0_2_png.rf.2b927ced3f49f91826cb9f9cc2868c48.jpg GT:182 Pred:169 TP:135 FP: 34 FN: 47 Err: -13
+  [ 257/396] enhanced_DJI_20250217125112_0119_D_chunk_0_2_png.rf.677d3b034d89dab636f7f0ac9c7e4a2a.jpg GT:185 Pred:224 TP:163 FP: 61 FN: 22 Err: +39
+  [ 258/396] enhanced_DJI_20250217125112_0119_D_chunk_0_2_png.rf.78869909c12e84ab12bbc218b6aacffe.jpg GT:184 Pred:176 TP:143 FP: 33 FN: 41 Err:  -8
+  [ 259/396] enhanced_DJI_20250217125112_0119_D_chunk_1_0_png.rf.1154ae1b5d394af78a1b7d1ae659b15a.jpg GT:  0 Pred:  0 TP:  0 FP:  0 FN:  0 Err:  +0
+  [ 260/396] enhanced_DJI_20250217125112_0119_D_chunk_1_0_png.rf.c5e210f279dc587dcb9b71173af2395c.jpg GT:  0 Pred:  0 TP:  0 FP:  0 FN:  0 Err:  +0
+  [ 261/396] enhanced_DJI_20250217125112_0119_D_chunk_1_0_png.rf.cedd16a49358f850e8df14772e910bd4.jpg GT:  0 Pred:  0 TP:  0 FP:  0 FN:  0 Err:  +0
+  [ 262/396] enhanced_DJI_20250217125112_0119_D_chunk_1_2_png.rf.25452296101b89924b336b7981f90bec.jpg GT:228 Pred:185 TP:144 FP: 41 FN: 84 Err: -43
+  [ 263/396] enhanced_DJI_20250217125112_0119_D_chunk_1_2_png.rf.9bea1741e342248148897ccd1a0fa29a.jpg GT:227 Pred:158 TP:130 FP: 28 FN: 97 Err: -69
+  [ 264/396] enhanced_DJI_20250217125112_0119_D_chunk_1_2_png.rf.f23d06f8330b516213ce706b33c7a495.jpg GT:228 Pred:153 TP:121 FP: 32 FN:107 Err: -75
+  [ 265/396] enhanced_DJI_20250217125114_0120_D_chunk_0_1_png.rf.7b9add275ad19456e8e5693bcf526540.jpg GT: 75 Pred: 38 TP: 36 FP:  2 FN: 39 Err: -37
+  [ 266/396] enhanced_DJI_20250217125114_0120_D_chunk_0_1_png.rf.dc67208b756534648194cecc8b6ca468.jpg GT: 73 Pred: 37 TP: 36 FP:  1 FN: 37 Err: -36
+  [ 267/396] enhanced_DJI_20250217125114_0120_D_chunk_0_1_png.rf.f0d4d6b572be4eaa70261929a4b16ba3.jpg GT: 73 Pred: 32 TP: 32 FP:  0 FN: 41 Err: -41
+  [ 268/396] enhanced_DJI_20250217125114_0120_D_chunk_1_1_png.rf.a007d37c0386967bdb885937169cdb0f.jpg GT: 58 Pred: 33 TP: 30 FP:  3 FN: 28 Err: -25
+  [ 269/396] enhanced_DJI_20250217125114_0120_D_chunk_1_1_png.rf.c2ee2afa1c7b26ba0c3a6313eafa0872.jpg GT: 58 Pred: 32 TP: 29 FP:  3 FN: 29 Err: -26
+  [ 270/396] enhanced_DJI_20250217125114_0120_D_chunk_1_1_png.rf.e13ea8059bad6e85740b14218f4c4b85.jpg GT: 58 Pred: 42 TP: 38 FP:  4 FN: 20 Err: -16
+  [ 271/396] enhanced_DJI_20250217125116_0121_D_chunk_0_2_png.rf.1139d584c7332ba29ce4ad6981a5c8b1.jpg GT: 97 Pred:106 TP: 83 FP: 23 FN: 14 Err:  +9
+  [ 272/396] enhanced_DJI_20250217125116_0121_D_chunk_0_2_png.rf.7bffb39b58e7492e7a644859315cb28f.jpg GT: 99 Pred:100 TP: 83 FP: 17 FN: 16 Err:  +1
+  [ 273/396] enhanced_DJI_20250217125116_0121_D_chunk_0_2_png.rf.c3e0a34b4af8c25dff618f01cb05afe6.jpg GT: 99 Pred:114 TP: 91 FP: 23 FN:  8 Err: +15
+  [ 274/396] enhanced_DJI_20250217125118_0122_D_chunk_0_1_png.rf.a66cfc81b51095721c27168c265ec493.jpg GT: 30 Pred: 15 TP: 15 FP:  0 FN: 15 Err: -15
+  [ 275/396] enhanced_DJI_20250217125118_0122_D_chunk_0_1_png.rf.abcaa52c68b087a4f043a081c171d679.jpg GT: 30 Pred: 17 TP: 17 FP:  0 FN: 13 Err: -13
+  [ 276/396] enhanced_DJI_20250217125118_0122_D_chunk_0_1_png.rf.d3c4a690ce07b5ba0ade4a6b2d14489b.jpg GT: 30 Pred: 17 TP: 17 FP:  0 FN: 13 Err: -13
+  [ 277/396] enhanced_DJI_20250217125118_0122_D_chunk_0_2_png.rf.1d40ad1af796e94044e2e17518c1d076.jpg GT: 50 Pred: 39 TP: 33 FP:  6 FN: 17 Err: -11
+  [ 278/396] enhanced_DJI_20250217125118_0122_D_chunk_0_2_png.rf.688af24fcc91a43dd162d452f7889bd8.jpg GT: 50 Pred: 43 TP: 36 FP:  7 FN: 14 Err:  -7
+  [ 279/396] enhanced_DJI_20250217125118_0122_D_chunk_0_2_png.rf.9a4dbac5dd47ae7ccff500b705dcbcff.jpg GT: 50 Pred: 49 TP: 39 FP: 10 FN: 11 Err:  -1
+  [ 280/396] enhanced_DJI_20250217125118_0122_D_chunk_1_2_png.rf.7fbe1725515a18ec6d534e638c9339b5.jpg GT: 82 Pred:175 TP: 74 FP:101 FN:  8 Err: +93
+  [ 281/396] enhanced_DJI_20250217125118_0122_D_chunk_1_2_png.rf.d81ad21f9bfd1899526a95782839789d.jpg GT: 80 Pred:104 TP: 57 FP: 47 FN: 23 Err: +24
+  [ 282/396] enhanced_DJI_20250217125118_0122_D_chunk_1_2_png.rf.fac14568e96410da67f9a8e0af548c09.jpg GT: 80 Pred:106 TP: 59 FP: 47 FN: 21 Err: +26
+  [ 283/396] enhanced_DJI_20250217125120_0123_D_chunk_0_2_png.rf.4862c2ce1bbcd3aee09d1e79e086a2cf.jpg GT:100 Pred: 56 TP: 43 FP: 13 FN: 57 Err: -44
+  [ 284/396] enhanced_DJI_20250217125120_0123_D_chunk_0_2_png.rf.5af8ccb228fc80614f9f68998f3b3c4f.jpg GT:100 Pred: 61 TP: 46 FP: 15 FN: 54 Err: -39
+  [ 285/396] enhanced_DJI_20250217125120_0123_D_chunk_0_2_png.rf.782b38bfec519b4d95143e1ef0557a2b.jpg GT:100 Pred: 63 TP: 48 FP: 15 FN: 52 Err: -37
+  [ 286/396] enhanced_DJI_20250217125120_0123_D_chunk_1_1_png.rf.313431715cb8cfe49f903c64143e611a.jpg GT: 75 Pred: 38 TP: 34 FP:  4 FN: 41 Err: -37
+  [ 287/396] enhanced_DJI_20250217125120_0123_D_chunk_1_1_png.rf.5fbdc5af154940f51060f367cf503252.jpg GT: 73 Pred: 30 TP: 28 FP:  2 FN: 45 Err: -43
+  [ 288/396] enhanced_DJI_20250217125120_0123_D_chunk_1_1_png.rf.b005abfd649007fa1f54b2416f629980.jpg GT: 75 Pred: 37 TP: 35 FP:  2 FN: 40 Err: -38
+  [ 289/396] enhanced_DJI_20250217125120_0123_D_chunk_1_2_png.rf.0ba312d3d42e03af00329adb7518899d.jpg GT:217 Pred:109 TP:100 FP:  9 FN:117 Err:-108
+  [ 290/396] enhanced_DJI_20250217125120_0123_D_chunk_1_2_png.rf.40625cfccf0a7e96cd86d97d915be29a.jpg GT:221 Pred:104 TP: 97 FP:  7 FN:124 Err:-117
+  [ 291/396] enhanced_DJI_20250217125120_0123_D_chunk_1_2_png.rf.fb7c2fc72990e666f46d148ae0f1df34.jpg GT:222 Pred:132 TP:123 FP:  9 FN: 99 Err: -90
+  [ 292/396] enhanced_DJI_20250217125148_0137_D_chunk_0_1_png.rf.21a99a8da92e1ad946f1624157892b37.jpg GT:191 Pred:198 TP:161 FP: 37 FN: 30 Err:  +7
+  [ 293/396] enhanced_DJI_20250217125148_0137_D_chunk_0_1_png.rf.9e576d2a78b115a9c9fa3efc55a20508.jpg GT:191 Pred:171 TP:137 FP: 34 FN: 54 Err: -20
+  [ 294/396] enhanced_DJI_20250217125148_0137_D_chunk_0_1_png.rf.cb92f284dd9e23ef3af7967cb63b5031.jpg GT:189 Pred:172 TP:146 FP: 26 FN: 43 Err: -17
+  [ 295/396] enhanced_DJI_20250217125150_0138_D_chunk_1_0_png.rf.09d045408792373dea6fc3b4d1e1d640.jpg GT:  7 Pred: 20 TP:  5 FP: 15 FN:  2 Err: +13
+  [ 296/396] enhanced_DJI_20250217125150_0138_D_chunk_1_0_png.rf.93f6b171dc9ba3a4fedae5564a4250a8.jpg GT:  7 Pred: 19 TP:  5 FP: 14 FN:  2 Err: +12
+  [ 297/396] enhanced_DJI_20250217125150_0138_D_chunk_1_0_png.rf.978e8c6bf381706540f0828f603b82e3.jpg GT:  7 Pred: 25 TP:  6 FP: 19 FN:  1 Err: +18
+  [ 298/396] enhanced_DJI_20250217125150_0138_D_chunk_1_2_png.rf.2c31831b71b787928369d271721d2a10.jpg GT: 17 Pred: 14 TP: 12 FP:  2 FN:  5 Err:  -3
+  [ 299/396] enhanced_DJI_20250217125150_0138_D_chunk_1_2_png.rf.d76edb5e044764c95699f16576b79ec9.jpg GT: 16 Pred:  7 TP:  6 FP:  1 FN: 10 Err:  -9
+  [ 300/396] enhanced_DJI_20250217125150_0138_D_chunk_1_2_png.rf.e4f7f75ef393f95ba8539d6d6e91aa88.jpg GT: 17 Pred: 13 TP: 10 FP:  3 FN:  7 Err:  -4
+  [ 301/396] enhanced_DJI_20250217125156_0141_D_chunk_0_1_png.rf.2a51f7c05b6cf52c7411c4d61921b1e2.jpg GT:170 Pred:179 TP:137 FP: 42 FN: 33 Err:  +9
+  [ 302/396] enhanced_DJI_20250217125156_0141_D_chunk_0_1_png.rf.5ac0607c352353e0a97503fea081cb7d.jpg GT:170 Pred:186 TP:145 FP: 41 FN: 25 Err: +16
+  [ 303/396] enhanced_DJI_20250217125156_0141_D_chunk_0_1_png.rf.f2919557be048bcd0448b0b0f9dc7218.jpg GT:170 Pred:187 TP:146 FP: 41 FN: 24 Err: +17
+  [ 304/396] enhanced_DJI_20250217125240_0163_D_chunk_0_0_png.rf.697f859736823eb9da1724b3d73b9707.jpg GT: 53 Pred: 54 TP: 49 FP:  5 FN:  4 Err:  +1
+  [ 305/396] enhanced_DJI_20250217125240_0163_D_chunk_0_0_png.rf.e28dec35ccbae4714f233d80e3b8f778.jpg GT: 53 Pred: 61 TP: 51 FP: 10 FN:  2 Err:  +8
+  [ 306/396] enhanced_DJI_20250217125240_0163_D_chunk_0_0_png.rf.e5cafbef3257a1928e9536034c198dda.jpg GT: 51 Pred: 56 TP: 49 FP:  7 FN:  2 Err:  +5
+  [ 307/396] enhanced_DJI_20250217125240_0163_D_chunk_0_1_png.rf.0575735ec7851cd5141f6ff10ffdead2.jpg GT: 35 Pred: 38 TP: 32 FP:  6 FN:  3 Err:  +3
+  [ 308/396] enhanced_DJI_20250217125240_0163_D_chunk_0_1_png.rf.e0f7d128b40dce0cd69d736e22d994af.jpg GT: 37 Pred: 40 TP: 33 FP:  7 FN:  4 Err:  +3
+  [ 309/396] enhanced_DJI_20250217125240_0163_D_chunk_0_1_png.rf.ec043c76854bd3a50fcfecf9c150044a.jpg GT: 37 Pred: 42 TP: 33 FP:  9 FN:  4 Err:  +5
+  [ 310/396] enhanced_DJI_20250217125240_0163_D_chunk_0_2_png.rf.4add7a8a10857da0b8f93d1c80d1026d.jpg GT: 53 Pred: 49 TP: 47 FP:  2 FN:  6 Err:  -4
+  [ 311/396] enhanced_DJI_20250217125240_0163_D_chunk_0_2_png.rf.8a07e5c00e0f602e65d27853476d542e.jpg GT: 53 Pred: 53 TP: 49 FP:  4 FN:  4 Err:  +0
+  [ 312/396] enhanced_DJI_20250217125240_0163_D_chunk_0_2_png.rf.e442756c8686129cf0906ff9f48cc733.jpg GT: 51 Pred: 47 TP: 44 FP:  3 FN:  7 Err:  -4
+  [ 313/396] enhanced_DJI_20250217125240_0163_D_chunk_1_0_png.rf.053c093ecefa0df2ffb7bb638626399b.jpg GT: 88 Pred: 85 TP: 79 FP:  6 FN:  9 Err:  -3
+  [ 314/396] enhanced_DJI_20250217125240_0163_D_chunk_1_0_png.rf.4a46a415285e767c144b9e326ba75cd9.jpg GT: 89 Pred: 90 TP: 84 FP:  6 FN:  5 Err:  +1
+  [ 315/396] enhanced_DJI_20250217125240_0163_D_chunk_1_0_png.rf.e149b3d9dbadff80d0fad2818693bf13.jpg GT: 89 Pred: 96 TP: 83 FP: 13 FN:  6 Err:  +7
+  [ 316/396] enhanced_DJI_20250217125240_0163_D_chunk_1_1_png.rf.130a8f5d774f45896b7d05eb670ebd50.jpg GT: 98 Pred:100 TP: 89 FP: 11 FN:  9 Err:  +2
+  [ 317/396] enhanced_DJI_20250217125240_0163_D_chunk_1_1_png.rf.9e563f5b8371c06326ed88c2712bed33.jpg GT: 98 Pred:103 TP: 92 FP: 11 FN:  6 Err:  +5
+  [ 318/396] enhanced_DJI_20250217125240_0163_D_chunk_1_1_png.rf.ea262861644a31a360f978df6aa33004.jpg GT: 98 Pred: 96 TP: 88 FP:  8 FN: 10 Err:  -2
+  [ 319/396] enhanced_DJI_20250217125242_0164_D_chunk_0_0_png.rf.976e4ae2755b6d8fd3ad381edce0ee58.jpg GT: 17 Pred: 21 TP: 17 FP:  4 FN:  0 Err:  +4
+  [ 320/396] enhanced_DJI_20250217125242_0164_D_chunk_0_0_png.rf.9b9a9493af627cd2675137846f744d19.jpg GT: 17 Pred: 19 TP: 17 FP:  2 FN:  0 Err:  +2
+  [ 321/396] enhanced_DJI_20250217125242_0164_D_chunk_0_0_png.rf.cc73c7c3f059091cac5021c795c5ea8d.jpg GT: 17 Pred: 21 TP: 17 FP:  4 FN:  0 Err:  +4
+  [ 322/396] enhanced_DJI_20250217125242_0164_D_chunk_0_1_png.rf.49cc8880effc8e91f7fadcf90d6fd7f8.jpg GT:  5 Pred:  8 TP:  5 FP:  3 FN:  0 Err:  +3
+  [ 323/396] enhanced_DJI_20250217125242_0164_D_chunk_0_1_png.rf.5f0edf6d3bff8ca4f6dd07bc6fabd7fe.jpg GT:  5 Pred:  7 TP:  5 FP:  2 FN:  0 Err:  +2
+  [ 324/396] enhanced_DJI_20250217125242_0164_D_chunk_0_1_png.rf.76376efa4d9471fe1cf88a500018f20f.jpg GT:  5 Pred:  9 TP:  5 FP:  4 FN:  0 Err:  +4
+  [ 325/396] enhanced_DJI_20250217125242_0164_D_chunk_0_2_png.rf.23ab4196bbeb8819f3a7960a6a61c033.jpg GT: 52 Pred: 56 TP: 51 FP:  5 FN:  1 Err:  +4
+  [ 326/396] enhanced_DJI_20250217125242_0164_D_chunk_0_2_png.rf.415982f8e74035c299738ec255095fd8.jpg GT: 51 Pred: 55 TP: 49 FP:  6 FN:  2 Err:  +4
+  [ 327/396] enhanced_DJI_20250217125242_0164_D_chunk_0_2_png.rf.886b7b2bed46a6940dc6373e2c248d07.jpg GT: 52 Pred: 55 TP: 48 FP:  7 FN:  4 Err:  +3
+  [ 328/396] enhanced_DJI_20250217125242_0164_D_chunk_1_0_png.rf.596846103f4c4c61918fd7ede63f7490.jpg GT:122 Pred:119 TP:113 FP:  6 FN:  9 Err:  -3
+  [ 329/396] enhanced_DJI_20250217125242_0164_D_chunk_1_0_png.rf.a5527d9a72977889817ed4d34a1db585.jpg GT:122 Pred:130 TP:114 FP: 16 FN:  8 Err:  +8
+  [ 330/396] enhanced_DJI_20250217125242_0164_D_chunk_1_0_png.rf.c20da4872e0851f006740eec741df05a.jpg GT:122 Pred:115 TP:112 FP:  3 FN: 10 Err:  -7
+  [ 331/396] enhanced_DJI_20250217125242_0164_D_chunk_1_1_png.rf.10111f49b9a8e51b57e62b2894cc4323.jpg GT: 96 Pred:103 TP: 90 FP: 13 FN:  6 Err:  +7
+  [ 332/396] enhanced_DJI_20250217125242_0164_D_chunk_1_1_png.rf.2aade2411f20e0707f02c78d0255712b.jpg GT: 96 Pred: 99 TP: 88 FP: 11 FN:  8 Err:  +3
+  [ 333/396] enhanced_DJI_20250217125242_0164_D_chunk_1_1_png.rf.3963786c21cce3560d67db6c611b6b35.jpg GT: 96 Pred:112 TP: 93 FP: 19 FN:  3 Err: +16
+  [ 334/396] enhanced_DJI_20250217125242_0164_D_chunk_1_2_png.rf.0af20667eb6adb8c5987f7c406d6bd7b.jpg GT: 61 Pred: 62 TP: 57 FP:  5 FN:  4 Err:  +1
+  [ 335/396] enhanced_DJI_20250217125242_0164_D_chunk_1_2_png.rf.d222d0818fe0e94f693540ade6157b6c.jpg GT: 61 Pred: 67 TP: 58 FP:  9 FN:  3 Err:  +6
+  [ 336/396] enhanced_DJI_20250217125242_0164_D_chunk_1_2_png.rf.d256ac3d3f12633a0a1d0c44265a8ef6.jpg GT: 61 Pred: 58 TP: 54 FP:  4 FN:  7 Err:  -3
+  [ 337/396] enhanced_DJI_20250217125244_0165_D_chunk_0_0_png.rf.3b139e487f86a4e3abd609f884be7b0b.jpg GT: 20 Pred: 39 TP: 20 FP: 19 FN:  0 Err: +19
+  [ 338/396] enhanced_DJI_20250217125244_0165_D_chunk_0_0_png.rf.84e16cdfae5c0c73d43d9880d583ba21.jpg GT: 20 Pred: 32 TP: 20 FP: 12 FN:  0 Err: +12
+  [ 339/396] enhanced_DJI_20250217125244_0165_D_chunk_0_0_png.rf.dfc18fa1a8c2684157c0850f80985045.jpg GT: 19 Pred: 26 TP: 19 FP:  7 FN:  0 Err:  +7
+  [ 340/396] enhanced_DJI_20250217125244_0165_D_chunk_0_1_png.rf.05241061a53c5bd72c98f06a8af7ffa8.jpg GT: 35 Pred: 40 TP: 34 FP:  6 FN:  1 Err:  +5
+  [ 341/396] enhanced_DJI_20250217125244_0165_D_chunk_0_1_png.rf.caa30a91e2c96bddf8d8fd4707590369.jpg GT: 35 Pred: 41 TP: 34 FP:  7 FN:  1 Err:  +6
+  [ 342/396] enhanced_DJI_20250217125244_0165_D_chunk_0_1_png.rf.cb7f63bbfaf967c66f38186503d13c5d.jpg GT: 35 Pred: 39 TP: 34 FP:  5 FN:  1 Err:  +4
+  [ 343/396] enhanced_DJI_20250217125244_0165_D_chunk_0_2_png.rf.961c49ab14ef63b18f9f062ea2928d51.jpg GT: 65 Pred: 75 TP: 61 FP: 14 FN:  4 Err: +10
+  [ 344/396] enhanced_DJI_20250217125244_0165_D_chunk_0_2_png.rf.aeb8291606bd3fa7bc4dec97cf44a52c.jpg GT: 65 Pred: 65 TP: 59 FP:  6 FN:  6 Err:  +0
+  [ 345/396] enhanced_DJI_20250217125244_0165_D_chunk_0_2_png.rf.ef3386a3cedd589c102d5a9f8e4337d7.jpg GT: 65 Pred: 69 TP: 61 FP:  8 FN:  4 Err:  +4
+  [ 346/396] enhanced_DJI_20250217125244_0165_D_chunk_1_2_png.rf.20bcf3be47ce0f5589f94a19a5b546b9.jpg GT: 55 Pred: 50 TP: 48 FP:  2 FN:  7 Err:  -5
+  [ 347/396] enhanced_DJI_20250217125244_0165_D_chunk_1_2_png.rf.6c2e2a1c6c5cf844b735f84d59b2d8d1.jpg GT: 55 Pred: 53 TP: 51 FP:  2 FN:  4 Err:  -2
+  [ 348/396] enhanced_DJI_20250217125244_0165_D_chunk_1_2_png.rf.96e8ee168fe41f5cb51fee8e2a117878.jpg GT: 55 Pred: 48 TP: 46 FP:  2 FN:  9 Err:  -7
+  [ 349/396] enhanced_DJI_20250217125246_0166_D_chunk_0_1_png.rf.2189d2db81d4d3f5d3639b8cf0e0d4d6.jpg GT: 60 Pred: 61 TP: 54 FP:  7 FN:  6 Err:  +1
+  [ 350/396] enhanced_DJI_20250217125246_0166_D_chunk_0_1_png.rf.70d07168bc91f9a40f99954dc7472da7.jpg GT: 60 Pred: 64 TP: 54 FP: 10 FN:  6 Err:  +4
+  [ 351/396] enhanced_DJI_20250217125246_0166_D_chunk_0_1_png.rf.a7a57a960ef493dd6616d94ce8dac678.jpg GT: 60 Pred: 61 TP: 54 FP:  7 FN:  6 Err:  +1
+  [ 352/396] enhanced_DJI_20250217125246_0166_D_chunk_0_2_png.rf.03753472f615532756e009353aa876ea.jpg GT: 74 Pred: 70 TP: 66 FP:  4 FN:  8 Err:  -4
+  [ 353/396] enhanced_DJI_20250217125246_0166_D_chunk_0_2_png.rf.2b05c0fdf466a702d9e0e8cb5fee49fa.jpg GT: 74 Pred: 70 TP: 65 FP:  5 FN:  9 Err:  -4
+  [ 354/396] enhanced_DJI_20250217125246_0166_D_chunk_0_2_png.rf.c593f5eede6173f9dfa7b7b2d2095e14.jpg GT: 74 Pred: 68 TP: 65 FP:  3 FN:  9 Err:  -6
+  [ 355/396] enhanced_DJI_20250217125246_0166_D_chunk_1_2_png.rf.3bce5a2d8ebf2136561c16f7b31675ac.jpg GT: 41 Pred: 52 TP: 40 FP: 12 FN:  1 Err: +11
+  [ 356/396] enhanced_DJI_20250217125246_0166_D_chunk_1_2_png.rf.d5bd77bc66a6b9a94683f9c2d74e3c10.jpg GT: 41 Pred: 48 TP: 39 FP:  9 FN:  2 Err:  +7
+  [ 357/396] enhanced_DJI_20250217125246_0166_D_chunk_1_2_png.rf.e0f5471410d12f59874977fa839f35b1.jpg GT: 41 Pred: 49 TP: 39 FP: 10 FN:  2 Err:  +8
+  [ 358/396] enhanced_DJI_20250217125248_0167_D_chunk_0_0_png.rf.9778c27a531aea72eb8c1ac6f7e01b45.jpg GT: 70 Pred: 75 TP: 62 FP: 13 FN:  8 Err:  +5
+  [ 359/396] enhanced_DJI_20250217125248_0167_D_chunk_0_0_png.rf.d12e4fd29e6e4eadaf6375c1e60dc608.jpg GT: 70 Pred: 66 TP: 60 FP:  6 FN: 10 Err:  -4
+  [ 360/396] enhanced_DJI_20250217125248_0167_D_chunk_0_0_png.rf.f95a97920f7312b88eeeb453cd0108e4.jpg GT: 69 Pred: 64 TP: 59 FP:  5 FN: 10 Err:  -5
+  [ 361/396] enhanced_DJI_20250217125248_0167_D_chunk_0_1_png.rf.0241275639bd489ff79581ec73b8eeb4.jpg GT: 83 Pred: 82 TP: 75 FP:  7 FN:  8 Err:  -1
+  [ 362/396] enhanced_DJI_20250217125248_0167_D_chunk_0_1_png.rf.3acf710754f42745108eba8d1c91862e.jpg GT: 83 Pred: 82 TP: 77 FP:  5 FN:  6 Err:  -1
+  [ 363/396] enhanced_DJI_20250217125248_0167_D_chunk_0_1_png.rf.a70427efcf615f599cdde9c3fc232fdc.jpg GT: 83 Pred: 95 TP: 77 FP: 18 FN:  6 Err: +12
+  [ 364/396] enhanced_DJI_20250217125248_0167_D_chunk_1_0_png.rf.1757d1f7e4d4faeb4f1751b81192fec7.jpg GT: 10 Pred: 12 TP:  9 FP:  3 FN:  1 Err:  +2
+  [ 365/396] enhanced_DJI_20250217125248_0167_D_chunk_1_0_png.rf.88d852863b1e8737894deb9a8ffc711f.jpg GT: 10 Pred: 14 TP: 10 FP:  4 FN:  0 Err:  +4
+  [ 366/396] enhanced_DJI_20250217125248_0167_D_chunk_1_0_png.rf.f07d02df58e766d9334e6f6e8a500885.jpg GT:  9 Pred: 12 TP:  8 FP:  4 FN:  1 Err:  +3
+  [ 367/396] enhanced_DJI_20250217125248_0167_D_chunk_1_1_png.rf.09069c2ef58fbb8fdc1e9af1888b9643.jpg GT: 12 Pred: 14 TP: 10 FP:  4 FN:  2 Err:  +2
+  [ 368/396] enhanced_DJI_20250217125248_0167_D_chunk_1_1_png.rf.4d8b9619f576500300dda8aa4e075c24.jpg GT: 12 Pred: 11 TP: 10 FP:  1 FN:  2 Err:  -1
+  [ 369/396] enhanced_DJI_20250217125248_0167_D_chunk_1_1_png.rf.a7a3ad287f7d229529ffca1abc05a28a.jpg GT: 14 Pred: 20 TP: 14 FP:  6 FN:  0 Err:  +6
+  [ 370/396] enhanced_DJI_20250217125250_0168_D_chunk_0_0_png.rf.1a5ef5aa85d9bffc3d622a154e75be86.jpg GT: 86 Pred: 83 TP: 74 FP:  9 FN: 12 Err:  -3
+  [ 371/396] enhanced_DJI_20250217125250_0168_D_chunk_0_0_png.rf.7682237dc8feb107156752c8b6e18242.jpg GT: 85 Pred: 78 TP: 72 FP:  6 FN: 13 Err:  -7
+  [ 372/396] enhanced_DJI_20250217125250_0168_D_chunk_0_0_png.rf.9a4c5b4673abf3376ff3847d85e90dac.jpg GT: 86 Pred: 78 TP: 73 FP:  5 FN: 13 Err:  -8
+  [ 373/396] enhanced_DJI_20250217125250_0168_D_chunk_0_1_png.rf.5f7b9991d8c3a316f59d73c41e9305e3.jpg GT: 94 Pred: 97 TP: 84 FP: 13 FN: 10 Err:  +3
+  [ 374/396] enhanced_DJI_20250217125250_0168_D_chunk_0_1_png.rf.681c9cb39e293f647d6e9772fefe47d3.jpg GT: 94 Pred: 92 TP: 82 FP: 10 FN: 12 Err:  -2
+  [ 375/396] enhanced_DJI_20250217125250_0168_D_chunk_0_1_png.rf.fa49a28579f1f8ee2a04ad7a75c3b9ee.jpg GT: 94 Pred: 93 TP: 82 FP: 11 FN: 12 Err:  -1
+  [ 376/396] enhanced_DJI_20250217125250_0168_D_chunk_1_0_png.rf.626aee5d5fb2a6f809e48b08da3ac3d9.jpg GT: 32 Pred: 39 TP: 31 FP:  8 FN:  1 Err:  +7
+  [ 377/396] enhanced_DJI_20250217125250_0168_D_chunk_1_0_png.rf.fb4dfe3b446aa58aa30dffbffaa3fd83.jpg GT: 32 Pred: 35 TP: 31 FP:  4 FN:  1 Err:  +3
+  [ 378/396] enhanced_DJI_20250217125250_0168_D_chunk_1_0_png.rf.ff9b41f729a1c98cb48da468807700fa.jpg GT: 32 Pred: 34 TP: 31 FP:  3 FN:  1 Err:  +2
+  [ 379/396] enhanced_DJI_20250217125252_0169_D_chunk_0_0_png.rf.258147915060c42cc1e42eec4dfafe34.jpg GT: 68 Pred: 79 TP: 62 FP: 17 FN:  6 Err: +11
+  [ 380/396] enhanced_DJI_20250217125252_0169_D_chunk_0_0_png.rf.6369251029e6af0ac556a28f114fe0bf.jpg GT: 68 Pred: 83 TP: 62 FP: 21 FN:  6 Err: +15
+  [ 381/396] enhanced_DJI_20250217125252_0169_D_chunk_0_0_png.rf.934161540b966d82da0d9b8ec272c50e.jpg GT: 68 Pred: 92 TP: 62 FP: 30 FN:  6 Err: +24
+  [ 382/396] enhanced_DJI_20250217125252_0169_D_chunk_0_2_png.rf.93f46fcf0712cfbf0bce682590b4493a.jpg GT: 73 Pred: 78 TP: 73 FP:  5 FN:  0 Err:  +5
+  [ 383/396] enhanced_DJI_20250217125252_0169_D_chunk_0_2_png.rf.b209129a509c3f72fe602fc2cdd003f1.jpg GT: 73 Pred: 74 TP: 71 FP:  3 FN:  2 Err:  +1
+  [ 384/396] enhanced_DJI_20250217125252_0169_D_chunk_0_2_png.rf.ecea2e35fb5aa9f84bca91b2aca36442.jpg GT: 73 Pred: 76 TP: 72 FP:  4 FN:  1 Err:  +3
+  [ 385/396] enhanced_DJI_20250217125252_0169_D_chunk_1_2_png.rf.0c3b87200454e23b77cd146e804bf070.jpg GT: 56 Pred: 58 TP: 55 FP:  3 FN:  1 Err:  +2
+  [ 386/396] enhanced_DJI_20250217125252_0169_D_chunk_1_2_png.rf.863c59c5f40504f73aeb9fdb3d946ac2.jpg GT: 56 Pred: 65 TP: 56 FP:  9 FN:  0 Err:  +9
+  [ 387/396] enhanced_DJI_20250217125252_0169_D_chunk_1_2_png.rf.e04cbdbeb1cb2c51d702c0c816f62894.jpg GT: 56 Pred: 58 TP: 55 FP:  3 FN:  1 Err:  +2
+  [ 388/396] enhanced_DJI_20250217125254_0170_D_chunk_0_0_png.rf.3f3e9ee7837ec9fa549d67891e4f4fbc.jpg GT: 54 Pred: 66 TP: 50 FP: 16 FN:  4 Err: +12
+  [ 389/396] enhanced_DJI_20250217125254_0170_D_chunk_0_0_png.rf.799b954f3c2f521765185e70115458b1.jpg GT: 54 Pred: 72 TP: 52 FP: 20 FN:  2 Err: +18
+  [ 390/396] enhanced_DJI_20250217125254_0170_D_chunk_0_0_png.rf.a5b1660224d000d8dd0431a065d477db.jpg GT: 54 Pred: 67 TP: 49 FP: 18 FN:  5 Err: +13
+  [ 391/396] enhanced_DJI_20250217125254_0170_D_chunk_0_1_png.rf.032ce2d4cace4a7c3be3fbac50d0a1d1.jpg GT: 79 Pred: 91 TP: 76 FP: 15 FN:  3 Err: +12
+  [ 392/396] enhanced_DJI_20250217125254_0170_D_chunk_0_1_png.rf.1d554e764554aa48dda6a7a73d590200.jpg GT: 79 Pred:100 TP: 76 FP: 24 FN:  3 Err: +21
+  [ 393/396] enhanced_DJI_20250217125254_0170_D_chunk_0_1_png.rf.97cd9959a7f7909f5f8d4ebe6d188473.jpg GT: 79 Pred: 90 TP: 76 FP: 14 FN:  3 Err: +11
+  [ 394/396] enhanced_DJI_20250217125254_0170_D_chunk_0_2_png.rf.2724a7706f5dcda04de26f71281edec7.jpg GT: 90 Pred: 86 TP: 82 FP:  4 FN:  8 Err:  -4
+  [ 395/396] enhanced_DJI_20250217125254_0170_D_chunk_0_2_png.rf.44f6db8b5aa5e28c7b65b6da248d6c47.jpg GT: 90 Pred: 82 TP: 80 FP:  2 FN: 10 Err:  -8
+  [ 396/396] enhanced_DJI_20250217125254_0170_D_chunk_0_2_png.rf.87d0a5407ae4c0ed0611c14eabcba1e8.jpg GT: 90 Pred: 92 TP: 82 FP: 10 FN:  8 Err:  +2
+
+  [INFO] train done in 38.3s (0.10s/img)
+  [INFO] Saved annotated images: 200
+
+============================================================
+  VALID: 34 images
+============================================================
+  [   1/34] enhanced_DJI_20250217124940_0073_D_chunk_1_1_png.rf.654c3da484c770102cfbf7b3cc93ae4f.jpg GT: 10 Pred: 18 TP: 10 FP:  8 FN:  0 Err:  +8
+  [   2/34] enhanced_DJI_20250217124944_0075_D_chunk_0_1_png.rf.89f2f36c7c4fd67f833d3044d28e4b3d.jpg GT: 26 Pred: 31 TP: 24 FP:  7 FN:  2 Err:  +5
+  [   3/34] enhanced_DJI_20250217124948_0077_D_chunk_1_0_png.rf.8b2938c30e41d23bd053acc39e821ba3.jpg GT: 71 Pred: 79 TP: 66 FP: 13 FN:  5 Err:  +8
+  [   4/34] enhanced_DJI_20250217124956_0081_D_chunk_1_1_png.rf.5aeeb9aaa9cb851771c250c0458551c3.jpg GT: 30 Pred: 31 TP: 28 FP:  3 FN:  2 Err:  +1
+  [   5/34] enhanced_DJI_20250217124958_0082_D_chunk_1_1_png.rf.4802330e2704fafd18416405a6609d22.jpg GT: 35 Pred: 34 TP: 33 FP:  1 FN:  2 Err:  -1
+  [   6/34] enhanced_DJI_20250217125000_0083_D_chunk_0_0_png.rf.f904086cbe7395280a343716ed261509.jpg GT: 92 Pred:109 TP: 89 FP: 20 FN:  3 Err: +17
+  [   7/34] enhanced_DJI_20250217125000_0083_D_chunk_0_1_png.rf.5eec4e55cdd83c1bf5a5435951f605e8.jpg GT: 39 Pred: 39 TP: 34 FP:  5 FN:  5 Err:  +0
+  [   8/34] enhanced_DJI_20250217125000_0083_D_chunk_1_0_png.rf.b9104aec77e1959f343e7de3062e3a7c.jpg GT:121 Pred:119 TP:108 FP: 11 FN: 13 Err:  -2
+  [   9/34] enhanced_DJI_20250217125004_0085_D_chunk_0_1_png.rf.1c963d50b061f89407391c0f33ee7fb0.jpg GT: 20 Pred: 22 TP: 18 FP:  4 FN:  2 Err:  +2
+  [  10/34] enhanced_DJI_20250217125006_0086_D_chunk_0_0_png.rf.c17c4a841b5c5eb05e8587a55ebbc413.jpg GT: 31 Pred: 37 TP: 31 FP:  6 FN:  0 Err:  +6
+  [  11/34] enhanced_DJI_20250217125024_0095_D_chunk_1_1_png.rf.3896faa82971d86fa181cfc84caca8c0.jpg GT: 60 Pred: 67 TP: 57 FP: 10 FN:  3 Err:  +7
+  [  12/34] enhanced_DJI_20250217125026_0096_D_chunk_0_1_png.rf.6cd7ab4884f31a019c3736961c0e7411.jpg GT: 76 Pred: 86 TP: 74 FP: 12 FN:  2 Err: +10
+  [  13/34] enhanced_DJI_20250217125026_0096_D_chunk_1_1_png.rf.e9e0a88b042bc9580e95d6879f034117.jpg GT: 73 Pred: 88 TP: 72 FP: 16 FN:  1 Err: +15
+  [  14/34] enhanced_DJI_20250217125028_0097_D_chunk_1_2_png.rf.fded2c675973505554b4d4ebcbe99a0e.jpg GT: 83 Pred: 76 TP: 71 FP:  5 FN: 12 Err:  -7
+  [  15/34] enhanced_DJI_20250217125030_0098_D_chunk_1_2_png.rf.798e9f6799065cdc55c222e0ff4c183a.jpg GT:102 Pred:101 TP: 85 FP: 16 FN: 17 Err:  -1
+  [  16/34] enhanced_DJI_20250217125032_0099_D_chunk_1_2_png.rf.961af00b719231b9df507a7327d1c825.jpg GT: 84 Pred: 86 TP: 76 FP: 10 FN:  8 Err:  +2
+  [  17/34] enhanced_DJI_20250217125034_0100_D_chunk_0_1_png.rf.26115baabe77cea9e757631dcace8e9e.jpg GT: 62 Pred: 75 TP: 61 FP: 14 FN:  1 Err: +13
+  [  18/34] enhanced_DJI_20250217125036_0101_D_chunk_0_1_png.rf.0f4964c838e7a2a6d882c172147c700c.jpg GT: 57 Pred: 61 TP: 54 FP:  7 FN:  3 Err:  +4
+  [  19/34] enhanced_DJI_20250217125038_0102_D_chunk_0_1_png.rf.1ee79efd2c6805efe0baf43a2bd2000e.jpg GT: 53 Pred: 57 TP: 50 FP:  7 FN:  3 Err:  +4
+  [  20/34] enhanced_DJI_20250217125038_0102_D_chunk_1_2_png.rf.9d85289bcdd6cd2d46ccfd050fdb9d91.jpg GT: 49 Pred: 61 TP: 47 FP: 14 FN:  2 Err: +12
+  [  21/34] enhanced_DJI_20250217125040_0103_D_chunk_0_2_png.rf.bd8c74edbaa161174cc067fa43bc577a.jpg GT: 70 Pred: 68 TP: 66 FP:  2 FN:  4 Err:  -2
+  [  22/34] enhanced_DJI_20250217125042_0104_D_chunk_0_2_png.rf.14843f438e52b1381e51912b8f3acb07.jpg GT: 99 Pred:105 TP: 94 FP: 11 FN:  5 Err:  +6
+  [  23/34] enhanced_DJI_20250217125044_0105_D_chunk_1_2_png.rf.000a1197d6ffb9347d7f798a2858712e.jpg GT: 35 Pred: 46 TP: 34 FP: 12 FN:  1 Err: +11
+  [  24/34] enhanced_DJI_20250217125050_0108_D_chunk_1_1_png.rf.0c7dce0e368d01fe0e2f5965b0f86cc0.jpg GT: 87 Pred:105 TP: 85 FP: 20 FN:  2 Err: +18
+  [  25/34] enhanced_DJI_20250217125052_0109_D_chunk_0_1_png.rf.6caf7e99dcf382d837123adfccdf454c.jpg GT:192 Pred:123 TP:116 FP:  7 FN: 76 Err: -69
+  [  26/34] enhanced_DJI_20250217125114_0120_D_chunk_0_2_png.rf.0d6d6fb790f81390bcced01467d78772.jpg GT:262 Pred:198 TP:181 FP: 17 FN: 81 Err: -64
+  [  27/34] enhanced_DJI_20250217125118_0122_D_chunk_1_1_png.rf.ec84e292be52e4b48c7bc057ab42580e.jpg GT: 67 Pred: 54 TP: 48 FP:  6 FN: 19 Err: -13
+  [  28/34] enhanced_DJI_20250217125156_0141_D_chunk_1_1_png.rf.6361e5fd1c93f0921b3d3b79acccb3c8.jpg GT:213 Pred:218 TP:158 FP: 60 FN: 55 Err:  +5
+  [  29/34] enhanced_DJI_20250217125244_0165_D_chunk_1_0_png.rf.7aa7cd1fc3d80c974c97f6b3f4e6eb7b.jpg GT: 73 Pred:102 TP: 71 FP: 31 FN:  2 Err: +29
+  [  30/34] enhanced_DJI_20250217125246_0166_D_chunk_0_0_png.rf.1fd28df9304c10a7067f960e4716856f.jpg GT: 34 Pred: 51 TP: 34 FP: 17 FN:  0 Err: +17
+  [  31/34] enhanced_DJI_20250217125246_0166_D_chunk_1_1_png.rf.049434bc1f282e5534d370af178c61fd.jpg GT: 30 Pred: 29 TP: 26 FP:  3 FN:  4 Err:  -1
+  [  32/34] enhanced_DJI_20250217125250_0168_D_chunk_1_2_png.rf.813eb6203bfd6112da19847d49e37227.jpg GT: 70 Pred: 65 TP: 60 FP:  5 FN: 10 Err:  -5
+  [  33/34] enhanced_DJI_20250217125252_0169_D_chunk_1_0_png.rf.b90eb1ee30c8a1971dba339442cddb59.jpg GT: 45 Pred: 68 TP: 43 FP: 25 FN:  2 Err: +23
+  [  34/34] enhanced_DJI_20250217125252_0169_D_chunk_1_1_png.rf.50d0858d71b9589137b89888b9e64489.jpg GT: 67 Pred: 75 TP: 65 FP: 10 FN:  2 Err:  +8
+
+  [INFO] valid done in 4.0s (0.12s/img)
+  [INFO] Saved annotated images: 34
+
+============================================================
+  TEST: 35 images
+============================================================
+  [   1/35] enhanced_DJI_20250217124942_0074_D_chunk_1_0_png.rf.0f105bf312e3d4cc073a94e494fd278c.jpg GT:126 Pred:131 TP:116 FP: 15 FN: 10 Err:  +5
+  [   2/35] enhanced_DJI_20250217124954_0080_D_chunk_0_1_png.rf.9a809403eb30d277f797bfcc9a77bd00.jpg GT: 37 Pred: 40 TP: 37 FP:  3 FN:  0 Err:  +3
+  [   3/35] enhanced_DJI_20250217125002_0084_D_chunk_0_1_png.rf.6c165d23450567ef8bbc630813e343bd.jpg GT: 37 Pred: 36 TP: 33 FP:  3 FN:  4 Err:  -1
+  [   4/35] enhanced_DJI_20250217125002_0084_D_chunk_1_0_png.rf.c517dfdcf5da2c6eb34c2d102124de52.jpg GT:102 Pred:105 TP: 97 FP:  8 FN:  5 Err:  +3
+  [   5/35] enhanced_DJI_20250217125004_0085_D_chunk_1_0_png.rf.4d5d4dac66911ffcf15a74f144f873c9.jpg GT:106 Pred: 98 TP: 94 FP:  4 FN: 12 Err:  -8
+  [   6/35] enhanced_DJI_20250217125006_0086_D_chunk_1_0_png.rf.85c98a0c87bcef2f11d95a5a0bcdcba6.jpg GT:114 Pred:104 TP: 97 FP:  7 FN: 17 Err: -10
+  [   7/35] enhanced_DJI_20250217125006_0086_D_chunk_1_1_png.rf.b15b57f526990eb9b493c85e756e042e.jpg GT: 39 Pred: 31 TP: 31 FP:  0 FN:  8 Err:  -8
+  [   8/35] enhanced_DJI_20250217125026_0096_D_chunk_0_2_png.rf.0bf3fffa372a8eeeebe54dc892e9456c.jpg GT: 83 Pred: 79 TP: 72 FP:  7 FN: 11 Err:  -4
+  [   9/35] enhanced_DJI_20250217125026_0096_D_chunk_1_2_png.rf.b94135253b206980db870d9999b14bd6.jpg GT: 87 Pred: 77 TP: 75 FP:  2 FN: 12 Err: -10
+  [  10/35] enhanced_DJI_20250217125028_0097_D_chunk_0_1_png.rf.071ca9130900e849ce7dc5ef93ab47df.jpg GT: 94 Pred: 93 TP: 86 FP:  7 FN:  8 Err:  -1
+  [  11/35] enhanced_DJI_20250217125028_0097_D_chunk_0_2_png.rf.693f007882aed7e264bb1c3b77cabb41.jpg GT: 84 Pred: 83 TP: 75 FP:  8 FN:  9 Err:  -1
+  [  12/35] enhanced_DJI_20250217125030_0098_D_chunk_0_1_png.rf.8565465351145d7211a408ec707956a6.jpg GT: 89 Pred: 93 TP: 83 FP: 10 FN:  6 Err:  +4
+  [  13/35] enhanced_DJI_20250217125030_0098_D_chunk_1_1_png.rf.2f46009629734c0d2a5d3f20a25b17b5.jpg GT:109 Pred:104 TP: 98 FP:  6 FN: 11 Err:  -5
+  [  14/35] enhanced_DJI_20250217125034_0100_D_chunk_1_1_png.rf.726b4cee498080df3618092e1896e9d2.jpg GT: 93 Pred: 96 TP: 86 FP: 10 FN:  7 Err:  +3
+  [  15/35] enhanced_DJI_20250217125036_0101_D_chunk_0_2_png.rf.83e77576288897c0d2ab0c3cbe9715ac.jpg GT: 16 Pred: 19 TP: 16 FP:  3 FN:  0 Err:  +3
+  [  16/35] enhanced_DJI_20250217125040_0103_D_chunk_1_1_png.rf.4d3ccb046cfbe29880c422aafd820f46.jpg GT: 73 Pred: 75 TP: 64 FP: 11 FN:  9 Err:  +2
+  [  17/35] enhanced_DJI_20250217125040_0103_D_chunk_1_2_png.rf.32d900b9a745041ecc9feedd8e5f5cba.jpg GT: 40 Pred: 36 TP: 36 FP:  0 FN:  4 Err:  -4
+  [  18/35] enhanced_DJI_20250217125042_0104_D_chunk_0_1_png.rf.693648023969ea95e1fcc88105aa4d1e.jpg GT: 76 Pred: 70 TP: 65 FP:  5 FN: 11 Err:  -6
+  [  19/35] enhanced_DJI_20250217125046_0106_D_chunk_1_1_png.rf.885529e2420f6685e9a0be42f99b2563.jpg GT: 66 Pred: 72 TP: 63 FP:  9 FN:  3 Err:  +6
+  [  20/35] enhanced_DJI_20250217125048_0107_D_chunk_1_1_png.rf.85499320924d74ad61193e6b307254b5.jpg GT: 92 Pred: 92 TP: 80 FP: 12 FN: 12 Err:  +0
+  [  21/35] enhanced_DJI_20250217125052_0109_D_chunk_1_1_png.rf.1a4904ae142f4beab55668ca08ac5af3.jpg GT:100 Pred: 97 TP: 87 FP: 10 FN: 13 Err:  -3
+  [  22/35] enhanced_DJI_20250217125056_0111_D_chunk_0_2_png.rf.53946630973c84d9f881466b7c7a065c.jpg GT: 59 Pred: 54 TP: 50 FP:  4 FN:  9 Err:  -5
+  [  23/35] enhanced_DJI_20250217125056_0111_D_chunk_1_1_png.rf.7c53b0cfb1a8b3f35b30d06a5f372006.jpg GT:108 Pred:113 TP: 97 FP: 16 FN: 11 Err:  +5
+  [  24/35] enhanced_DJI_20250217125058_0112_D_chunk_1_2_png.rf.313df2d95ecf44d3e777d8b57ebd0665.jpg GT:105 Pred:100 TP: 90 FP: 10 FN: 15 Err:  -5
+  [  25/35] enhanced_DJI_20250217125240_0163_D_chunk_1_2_png.rf.6ab509de03333796bebc2dc765f3c441.jpg GT: 76 Pred: 78 TP: 69 FP:  9 FN:  7 Err:  +2
+  [  26/35] enhanced_DJI_20250217125244_0165_D_chunk_1_1_png.rf.224b6fd78ac227f7bd67f68cf5b218f1.jpg GT: 68 Pred: 76 TP: 63 FP: 13 FN:  5 Err:  +8
+  [  27/35] enhanced_DJI_20250217125246_0166_D_chunk_1_0_png.rf.f379e462501b9e0861e979c09e5d4de9.jpg GT: 40 Pred: 51 TP: 37 FP: 14 FN:  3 Err: +11
+  [  28/35] enhanced_DJI_20250217125248_0167_D_chunk_0_2_png.rf.afc2862183b389c724bf766c60985335.jpg GT: 87 Pred: 81 TP: 76 FP:  5 FN: 11 Err:  -6
+  [  29/35] enhanced_DJI_20250217125248_0167_D_chunk_1_2_png.rf.6d027610474cea2b67b4876feb027d94.jpg GT: 51 Pred: 55 TP: 49 FP:  6 FN:  2 Err:  +4
+  [  30/35] enhanced_DJI_20250217125250_0168_D_chunk_0_2_png.rf.e79846ad92c1f9a1e35b4c9755f0b816.jpg GT: 77 Pred: 83 TP: 76 FP:  7 FN:  1 Err:  +6
+  [  31/35] enhanced_DJI_20250217125250_0168_D_chunk_1_1_png.rf.93c4469727f3fda7ce407d9c863a5d8d.jpg GT: 46 Pred: 40 TP: 39 FP:  1 FN:  7 Err:  -6
+  [  32/35] enhanced_DJI_20250217125252_0169_D_chunk_0_1_png.rf.fd032bfdd7d440962f1de4fc212d350c.jpg GT:100 Pred:111 TP: 95 FP: 16 FN:  5 Err: +11
+  [  33/35] enhanced_DJI_20250217125254_0170_D_chunk_1_0_png.rf.b79e3a2fb88a664e48863483920f2c58.jpg GT: 73 Pred: 82 TP: 68 FP: 14 FN:  5 Err:  +9
+  [  34/35] enhanced_DJI_20250217125254_0170_D_chunk_1_1_png.rf.427c84e135a180e8ec85683bd4bf3092.jpg GT: 98 Pred:110 TP: 91 FP: 19 FN:  7 Err: +12
+  [  35/35] enhanced_DJI_20250217125254_0170_D_chunk_1_2_png.rf.bdcf812db930854679f047b6837bceae.jpg GT: 74 Pred: 77 TP: 69 FP:  8 FN:  5 Err:  +3
+
+  [INFO] test done in 4.1s (0.12s/img)
+  [INFO] Saved annotated images: 35
+
+============================================================
+  COUNTING METRICS & RESEARCH PLOTS
+============================================================
+  [train] P:0.862 R:0.866 F1:0.864 MAE:9.12 RMSE:19.08 R2:0.7878
+  [valid] P:0.839 R:0.861 F1:0.850 MAE:11.65 RMSE:19.21 R2:0.8878
+  [test ] P:0.897 R:0.903 F1:0.900 MAE:5.23 RMSE:6.08 R2:0.9479
+
+  [OVERALL] P:0.863 R:0.869 F1:0.866 MAE:9.02 RMSE:18.44 R2:0.8011
+[PLOT] gt_vs_pred_scatter.png
+[PLOT] counting_error_histogram.png
+[PLOT] bland_altman_plot.png
+[PLOT] per_split_comparison.png
+
+============================================================
+  FINAL SUMMARY
+============================================================
+
+  Model:     yolov12x
+  imgsz:     1280
+  Training:  16.6 min on 0,1,2,3
+  Early stopping: patience=25
+
+  DETECTION:  mAP50=0.8551  mAP50-95=0.487
+  COUNTING:   P=0.8631  R=0.8687  F1=0.8659
+              MAE=9.02  RMSE=18.44  MAPE=14.77%  R2=0.8011
+
+  Experiment: /home/ragul/Thesis/faba/Yolov12/experiments/yolov12x_20260214_235745
